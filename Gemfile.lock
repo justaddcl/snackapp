@@ -147,7 +147,7 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
-    react_on_rails (11.3.0)
+    react_on_rails (11.1.4)
       addressable
       connection_pool
       execjs (~> 2.5)
@@ -222,7 +222,7 @@ DEPENDENCIES
   pg (>= 0.18, < 2.0)
   puma (~> 3.11)
   rails (~> 6.0.0)
-  react_on_rails (= 11.3)
+  react_on_rails (= 11.1.4)
   sass-rails (~> 5)
   selenium-webdriver
   spring
