@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_role_id: 1
+  discipleship_community_night: MyString
+
+two:
+  user_role_id: 1
+  discipleship_community_night: MyString
