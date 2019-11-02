@@ -10,18 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_20_033342) do
+ActiveRecord::Schema.define(version: 2019_10_21_021255) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "assignments", force: :cascade do |t|
-    t.integer "user"
-    t.integer "event"
+    t.integer "user_id"
+    t.integer "event_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["event"], name: "index_assignments_on_event"
-    t.index ["user"], name: "index_assignments_on_user"
+    t.index ["event_id"], name: "index_assignments_on_event_id"
+    t.index ["user_id"], name: "index_assignments_on_user_id"
   end
 
   create_table "discipleship_communities", force: :cascade do |t|
@@ -39,14 +39,14 @@ ActiveRecord::Schema.define(version: 2019_10_20_033342) do
   end
 
   create_table "events", force: :cascade do |t|
-    t.integer "event_type"
+    t.integer "event_type_id"
     t.string "event_description"
     t.integer "gatherable_id"
     t.string "gatherable_type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["event_description"], name: "index_events_on_event_description"
-    t.index ["event_type"], name: "index_events_on_event_type"
+    t.index ["event_type_id"], name: "index_events_on_event_type_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -65,14 +65,14 @@ ActiveRecord::Schema.define(version: 2019_10_20_033342) do
   end
 
   create_table "user_roles", force: :cascade do |t|
-    t.integer "user"
-    t.integer "role"
-    t.integer "group"
+    t.integer "user_id"
+    t.integer "role_id"
+    t.integer "group_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["group"], name: "index_user_roles_on_group"
-    t.index ["role"], name: "index_user_roles_on_role"
-    t.index ["user"], name: "index_user_roles_on_user"
+    t.index ["group_id"], name: "index_user_roles_on_group_id"
+    t.index ["role_id"], name: "index_user_roles_on_role_id"
+    t.index ["user_id"], name: "index_user_roles_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -82,8 +82,8 @@ ActiveRecord::Schema.define(version: 2019_10_20_033342) do
     t.string "password"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_role"
-    t.index ["user_role"], name: "index_users_on_user_role"
+    t.integer "user_role_id"
+    t.index ["user_role_id"], name: "index_users_on_user_role_id"
   end
 
 end
