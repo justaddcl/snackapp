@@ -2,4 +2,4 @@ snackapp
 
 ## Postgres Database Layout
 
-![erd](erd.jpg)
+![erd](/erd/erd.jpg)
