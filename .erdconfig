@@ -1,8 +1,8 @@
 attributes:
-  - content
-  - inheritance
   - foreign_keys
   - timestamps
+  - inheritance
+  - content
 disconnected: true
 filename: erd/erd
 filetype: jpg
