@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  event_type: 
+  event_description: MyString
+  gatherable_id: 1
+  gatherable_type: MyString
+
+two:
+  event_type: 
+  event_description: MyString
+  gatherable_id: 1
+  gatherable_type: MyString

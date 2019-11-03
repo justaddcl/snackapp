@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
+<<<<<<< HEAD
   get 'hello_world', to: 'hello_world#index'
+=======
+  resources :discipleship_communities
+  resources :small_groups
+  resources :event_types
+  resources :events
+  resources :assignments
+  resources :roles
+  resources :user_roles
+>>>>>>> db_setup
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   # root '{{page name}}' to set root page
   root 'application#index'

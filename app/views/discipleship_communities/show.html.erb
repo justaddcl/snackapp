@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User role:</strong>
+  <%= @discipleship_community.user_role_id %>
+</p>
+
+<p>
+  <strong>Discipleship community night:</strong>
+  <%= @discipleship_community.discipleship_community_night %>
+</p>
+
+<%= link_to 'Edit', edit_discipleship_community_path(@discipleship_community) %> |
+<%= link_to 'Back', discipleship_communities_path %>
