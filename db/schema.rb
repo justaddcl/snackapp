@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_03_022533) do
+ActiveRecord::Schema.define(version: 2019_11_03_054437) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,11 +25,11 @@ ActiveRecord::Schema.define(version: 2019_11_03_022533) do
   end
 
   create_table "discipleship_communities", force: :cascade do |t|
-    t.integer "user_role_id"
+    t.integer "user_id"
     t.string "discipleship_community_night"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_role_id"], name: "index_discipleship_communities_on_user_role_id"
+    t.index ["user_id"], name: "index_discipleship_communities_on_user_id"
   end
 
   create_table "event_types", force: :cascade do |t|
@@ -56,12 +56,12 @@ ActiveRecord::Schema.define(version: 2019_11_03_022533) do
   end
 
   create_table "small_groups", force: :cascade do |t|
-    t.integer "user_role_id"
+    t.integer "user_id"
     t.integer "discipleship_community_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["discipleship_community_id"], name: "index_small_groups_on_discipleship_community_id"
-    t.index ["user_role_id"], name: "index_small_groups_on_user_role_id"
+    t.index ["user_id"], name: "index_small_groups_on_user_id"
   end
 
   create_table "user_roles", force: :cascade do |t|
@@ -84,4 +84,5 @@ ActiveRecord::Schema.define(version: 2019_11_03_022533) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "small_groups", "users"
 end
