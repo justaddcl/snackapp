@@ -10,7 +10,6 @@ gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use React with Rails for front-end
-gem 'react_on_rails', '11.1.4'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
@@ -55,5 +54,3 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
-gem 'mini_racer', platforms: :ruby
