@@ -37,11 +37,11 @@ user_roles = UserRole.create([
 ])
 
 discipleship_communities = DiscipleshipCommunity.create([
-  { user_id: users[0].id, discipleship_community_night: 'Tuesday'},
-  { user_id: users[0].id, discipleship_community_night: 'Wednesday'},
-  { user_id: users[0].id, discipleship_community_night: 'Thursday'}
+  { pastor_id: users[0].id, discipleship_community_night: 'Tuesday'},
+  { pastor_id: users[0].id, discipleship_community_night: 'Wednesday'},
+  { pastor_id: users[0].id, discipleship_community_night: 'Thursday'}
 ])
 
 small_groups = SmallGroup.create([
-  { user_id: users[1].id, discipleship_community_id: discipleship_communities[0].id}
+  { leader_id: users[1].id, discipleship_community_id: discipleship_communities[0].id}
 ])
