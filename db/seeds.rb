@@ -12,16 +12,18 @@ event_type_party = EventType.create({ event_type_description: 'Party' })
 event_type_other = EventType.create({ event_type_description: 'Other' })
 
 users = User.create([
-  { first_name: 'Discipleship Community', last_name: 'Pastor',
-    email: 'pastor@discipleshipcommunity.com', password: 'password' },
-  { first_name: 'Group', last_name: 'Leader',
-    email: 'leader@group.com', password: 'password' },
-  { first_name: 'Group', last_name: 'Member',
-    email: 'member@group.com', password: 'password' },
-  { first_name: 'Bugger', last_name: 'McBuggerson',
-    email: 'bugger.mcbuggerson@gmail.com', password: 'bugger' },
-  { first_name: 'Tester', last_name: 'McTesterson',
-    email: 'tester_mctesterson@gmail.com', password: 'testingallthetests' },
+  { first_name: 'Discipleship Community', last_name: 'Pastor', email: 'pastor@discipleshipcommunity.com', 
+      password: 'password', password_confirmation: 'password' },
+  { first_name: 'Group', last_name: 'Leader', email: 'leader@group.com',
+      password: 'password', password_confirmation: 'password' },
+  { first_name: 'Group', last_name: 'Member', email: 'member@group.com',
+    password: 'password', password_confirmation: 'password' },
+    { first_name: 'Example', last_name: 'Person', email: 'example@site.com',
+      password: 'password', password_confirmation: 'password' },
+  { first_name: 'Bugger', last_name: 'McBuggerson', email: 'bugger.mcbuggerson@gmail.com',
+    password: 'bugger', password_confirmation: 'bugger' },
+  { first_name: 'Tester', last_name: 'McTesterson', email: 'tester_mctesterson@gmail.com',
+      password: 'testingallthetests', password_confirmation: 'testingallthetests' }
 ])
 
 roles = Role.create([
