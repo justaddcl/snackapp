@@ -1,7 +1,13 @@
 module SessionsHelper
-  # logs in the give user
+  # logs in the given user
   def log_in(user)
     session[:user_id] = user.id
+  end
+
+  # logs out the current user
+  def log_out
+    session.delete(:user_id)
+    @current_user = nil
   end
 
   # returns the currently logged-in user
