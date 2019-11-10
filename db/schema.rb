@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_08_042018) do
+ActiveRecord::Schema.define(version: 2019_11_10_045139) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,31 +26,31 @@ ActiveRecord::Schema.define(version: 2019_11_08_042018) do
 
   create_table "discipleship_communities", force: :cascade do |t|
     t.integer "pastor_id"
-    t.string "discipleship_community_night"
+    t.string "night"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["pastor_id"], name: "index_discipleship_communities_on_pastor_id"
   end
 
   create_table "event_types", force: :cascade do |t|
-    t.string "event_type_description"
+    t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "events", force: :cascade do |t|
     t.integer "event_type_id"
-    t.string "event_description"
+    t.string "description"
     t.integer "gatherable_id"
     t.string "gatherable_type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["event_description"], name: "index_events_on_event_description"
+    t.index ["description"], name: "index_events_on_description"
     t.index ["event_type_id"], name: "index_events_on_event_type_id"
   end
 
   create_table "roles", force: :cascade do |t|
-    t.string "role_description"
+    t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

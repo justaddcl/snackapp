@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>ID</th>
       <th>Event type</th>
       <th>Event description</th>
       <th>Gatherable</th>
@@ -16,8 +17,9 @@
   <tbody>
     <% @events.each do |event| %>
       <tr>
+        <td><%= event.id %></td>
         <td><%= event.event_type %></td>
-        <td><%= event.event_description %></td>
+        <td><%= event.description %></td>
         <td><%= event.gatherable_id %></td>
         <td><%= event.gatherable_type %></td>
         <td><%= link_to 'Show', event %></td>
