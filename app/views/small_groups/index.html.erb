@@ -5,7 +5,8 @@
 <table>
   <thead>
     <tr>
-      <th>User role</th>
+      <th>Group leader</th>
+      <th>Meeting night</th>
       <th>Discipleship community</th>
       <th colspan="3"></th>
     </tr>
@@ -14,8 +15,9 @@
   <tbody>
     <% @small_groups.each do |small_group| %>
       <tr>
-        <td><%= small_group.user_role_id %></td>
-        <td><%= small_group.discipleship_community_id %></td>
+        <td><%= small_group.leader.first_name + ' ' + small_group.leader.last_name %></td>
+        <td><%= small_group.discipleship_community.discipleship_community_night %></td>
+        <td><%= small_group.discipleship_community.pastor.first_name + ' ' + small_group.discipleship_community.pastor.last_name%></td>
         <td><%= link_to 'Show', small_group %></td>
         <td><%= link_to 'Edit', edit_small_group_path(small_group) %></td>
         <td><%= link_to 'Destroy', small_group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
