@@ -12,5 +12,9 @@ Rails.application.routes.draw do
   resources :roles
   resources :user_roles
 
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy'
+
   get "/register", to: 'users#new'
 end
