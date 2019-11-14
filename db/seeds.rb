@@ -6,10 +6,22 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-event_type_meeting = EventType.create({ event_type_description: 'Meeting' })
-event_type_dc = EventType.create({ event_type_description: 'Discipleship Community' })
-event_type_party = EventType.create({ event_type_description: 'Party' })
-event_type_other = EventType.create({ event_type_description: 'Other' })
+event_types = EventType.create([
+  { description: 'Meeting' },
+  { description: 'Discipleship Community' },
+  { description: 'Party' },
+  { description: 'Other' }
+  ])
+
+permissions = Permission.create([
+  { description: 'User' },
+  { description: 'Group Assistant' },
+  { description: 'Group Coordinator' },
+  { description: 'Discipleship Community Assistant' },
+  { description: 'Discipleship Community Coordinator' },
+  { description: 'Supervisor' },
+  { description: 'Administrator' }
+])
 
 users = User.create([
   { first_name: 'Discipleship Community', last_name: 'Pastor', email: 'pastor@discipleshipcommunity.com', 
@@ -26,22 +38,24 @@ users = User.create([
       password: 'testingallthetests', password_confirmation: 'testingallthetests' }
 ])
 
+
+
 roles = Role.create([
-  { role_description: 'Discipleship Community pastor' },
-  { role_description: 'Small group leader' },
-  { role_description: 'Small group member' }
+  { description: 'Discipleship Community pastor' },
+  { description: 'Small group leader' },
+  { description: 'Small group member' }
 ])
 
 user_roles = UserRole.create([
-  { user_id: users[0].id, role_id: roles[0].id },
-  { user_id: users[1].id, role_id: roles[1].id, small_group_id: 1},
-  { user_id: users[2].id, role_id: roles[2].id, small_group_id: 1}
+  { user_id: users[0].id, role_id: roles[0].id, permission_id: permissions[3].id},
+  { user_id: users[1].id, role_id: roles[1].id, small_group_id: 1, permission_id: permissions[1].id},
+  { user_id: users[2].id, role_id: roles[2].id, small_group_id: 1, permission_id: permissions[0].id}
 ])
 
 discipleship_communities = DiscipleshipCommunity.create([
-  { pastor_id: users[0].id, discipleship_community_night: 'Tuesday'},
-  { pastor_id: users[0].id, discipleship_community_night: 'Wednesday'},
-  { pastor_id: users[0].id, discipleship_community_night: 'Thursday'}
+  { pastor_id: users[0].id, night: 'Tuesday'},
+  { pastor_id: users[0].id, night: 'Wednesday'},
+  { pastor_id: users[0].id, night: 'Thursday'}
 ])
 
 small_groups = SmallGroup.create([
