@@ -30,7 +30,7 @@ class User < ApplicationRecord
   end
 
   def forget
-    update_attribute(:remember_digest, nill)
+    update_attribute(:remember_digest, nil)
   end
 
   # returns if the given token matches the digest
