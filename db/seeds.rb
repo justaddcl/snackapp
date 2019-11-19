@@ -38,7 +38,17 @@ users = User.create([
       password: 'testingallthetests', password_confirmation: 'testingallthetests' }
 ])
 
-
+99.times do |n|
+  first_name = Faker::Name.first_name
+  last_name = Faker::Name.last_name
+  email = "fakeperson#{n+1}@faker.net"
+  password = 'password'
+  User.create!(first_name: first_name,
+               last_name: last_name,
+               email: email,
+               password: password,
+               password_confirmation: password)
+end
 
 roles = Role.create([
   { description: 'Discipleship Community pastor' },

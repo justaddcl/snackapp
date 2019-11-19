@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  self.per_page = 25
   attr_accessor :remember_token
   before_save { self.email = email.downcase }
   has_secure_password
