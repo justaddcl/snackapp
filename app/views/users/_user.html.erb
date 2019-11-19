@@ -4,4 +4,10 @@
   <td><%= user.last_name %></td>
   <td><%= user.email %></td>
   <td><%= link_to 'Show', user_path(user) %></td>
+  <% if current_user.permission_id == 7 && !current_user?(user) %>
+    <td>
+      <%= link_to "delete", user, method: :delete,
+                                  data: { confirm: "You sure?" } %>
+    </td>
+  <% end %>
 </tr>
