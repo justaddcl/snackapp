@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  self.per_page = 25
   attr_accessor :remember_token
   before_save { self.email = email.downcase }
   has_secure_password
@@ -7,9 +8,10 @@ class User < ApplicationRecord
   has_many :small_groups
   has_many :user_roles
 
-  validates :first_name, :last_name, :email, :password, presence: true
-  validates :email, uniqueness: { case_sensitive: false }
-  validates :password, length: { minimum: 8 }
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :email, presence: true, uniqueness: { case_sensitive: false }
+  validates :password, presence: true, length: { minimum: 8 }, allow_nil: true
 
   # returns the has digest of the given string
   def User.digest(string)
@@ -29,7 +31,7 @@ class User < ApplicationRecord
   end
 
   def forget
-    update_attribute(:remember_digest, nill)
+    update_attribute(:remember_digest, nil)
   end
 
   # returns if the given token matches the digest

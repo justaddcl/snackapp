@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  skip_before_action :logged_in_user, only: [:new, :create]
+
   def new
   end
 
@@ -7,10 +9,10 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       log_in user
       params[:session][:remember_me] == '1' ? remember(user) : forget(user)
-      redirect_to user
+      redirect_back_or user
     else
-      flash.now[:danger] = "Hmmm something wasn't quite right with the email or password.
-        Please try again"
+      flash.now[:danger] = "Hmmm something wasn't quite right with the email or
+        password. Please try again"
       render 'new'
     end
   end
