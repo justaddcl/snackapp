@@ -47,7 +47,7 @@ module SessionsHelper
 
   # stores intended URL of request
   def store_location
-    session[:forwarding_url] = request.original_url if request.get?
+    session[:forwarding_url] = request.original_fullpath if request.get?
   end
 
   def redirect_back_or(default)

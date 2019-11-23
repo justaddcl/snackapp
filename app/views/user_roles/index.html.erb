@@ -9,7 +9,6 @@
       <th>User</th>
       <th>Role</th>
       <th>Group</th>
-      <th>Permissions</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -22,12 +21,11 @@
         <td><%= user_role.role.description %></td>
         <td>
           <% if user_role.small_group %>
-            <%= user_role.small_group.leader.first_name + ' ' + user_role.small_group.leader.last_name + '\'s ' + user_role.small_group.discipleship_community.night %>
+            <%= user_role.small_group.leader.first_name + ' ' + user_role.small_group.leader.last_name + ' - ' + user_role.small_group.discipleship_community.night %>
           <% else %>
             N/A
           <% end %>
         </td>
-        <td><%= user_role.permission.description %></td>
         <td><%= link_to 'Show', user_role %></td>
         <td><%= link_to 'Edit', edit_user_role_path(user_role) %></td>
         <td><%= link_to 'Destroy', user_role, method: :delete, data: { confirm: 'Are you sure?' } %></td>

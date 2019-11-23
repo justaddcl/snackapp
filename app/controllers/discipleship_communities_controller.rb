@@ -1,4 +1,5 @@
 class DiscipleshipCommunitiesController < ApplicationController
+  before_action :admin_user
   before_action :set_discipleship_community, only: [:show, :edit, :update, :destroy]
 
   # GET /discipleship_communities

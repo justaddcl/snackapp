@@ -21,30 +21,6 @@ event_types = EventType.create([
   }
   ])
 
-permissions = Permission.create([
-  {
-    description: 'User'
-  },
-  {
-    description: 'Group Administrator'
-  },
-  {
-    description: 'Group Coordinator'
-  },
-  {
-    description: 'Discipleship Community Administrator'
-  },
-  {
-    description: 'Discipleship Community Coordinator'
-  },
-  {
-    description: 'Supervisor'
-  },
-  {
-    description: 'Administrator'
-  }
-])
-
 users = User.create([
   {
     first_name: 'Discipleship Community',
@@ -93,6 +69,21 @@ users = User.create([
     last_name: 'Administrator',
     email: 'admin@snack.app',
     password: 'password',
+    password_confirmation: 'password',
+    admin: true
+  },
+  {
+    first_name: 'Discipleship Community',
+    last_name: 'Coordinator',
+    email: 'coordinator@dc.app',
+    password: 'password',
+    password_confirmation: 'password'
+  },
+  {
+    first_name: 'Group',
+    last_name: 'Coordinator',
+    email: 'coordinator@group.app',
+    password: 'password',
     password_confirmation: 'password'
   }
 ])
@@ -118,32 +109,44 @@ roles = Role.create([
   },
   {
     description: 'Small group member'
+  },
+  {
+    description: 'Discipleship Community coordinator'
+  },
+  {
+    description: 'Small group coordinator'
   }
 ])
 
 user_roles = UserRole.create([
   {
     user_id: users[0].id,
-    role_id: roles[0].id,
-    permission_id: permissions[3].id
+    role_id: roles[0].id
   },
   {
     user_id: users[1].id,
     role_id: roles[1].id,
-    small_group_id: 1,
-    permission_id: permissions[1].id
+    small_group_id: 1
   },
   {
     user_id: users[2].id,
     role_id: roles[2].id,
-    small_group_id: 1,
-    permission_id: permissions[0].id
+    small_group_id: 1
   },
   {
     user_id: users[6].id,
     role_id: roles[1].id,
-    small_group_id: 1,
-    permission_id: permissions[6].id
+    small_group_id: 1
+  },
+  {
+    user_id: users[7].id,
+    role_id: roles[3].id,
+    small_group_id: 1
+  },
+  {
+    user_id: users[8].id,
+    role_id: roles[4].id,
+    small_group_id: 1
   }
 ])
 

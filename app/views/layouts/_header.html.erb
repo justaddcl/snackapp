@@ -3,10 +3,12 @@
     <ul>
       <li><%= link_to "SnackApp", root_path %></li>
       <% if logged_in? %>
-        <li><%= link_to "Users", users_path %></li>
-        <li><%= link_to "User Roles", user_roles_path %></li>
-        <li><%= link_to "Small Groups", small_groups_path %></li>
-        <li><%= link_to "Discipleship Communities", discipleship_communities_path %></li>
+        <% if current_user.admin? %>
+          <li><%= link_to "Users", users_path %></li>
+          <li><%= link_to "User Roles", user_roles_path %></li>
+          <li><%= link_to "Small Groups", small_groups_path %></li>
+          <li><%= link_to "Discipleship Communities", discipleship_communities_path %></li>
+        <% end %>
         <li><%= link_to "Events", events_path %></li>
         <li><%= link_to "Settings", edit_user_path(current_user) %></li>
         <li><%= link_to "Log out", logout_path, method: :delete %></li>

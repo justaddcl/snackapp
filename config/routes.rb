@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
-  resources :permissions
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   # root '{{page name}}' to set root page
-  root 'application#index'
+  root 'pages#index'
 
   resources :users
   resources :discipleship_communities
