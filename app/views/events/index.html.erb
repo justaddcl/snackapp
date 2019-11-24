@@ -6,8 +6,10 @@
   <thead>
     <tr>
       <th>ID</th>
+      <th>Date</th>
+      <th>Start time</th>
       <th>Event type</th>
-      <th>Event description</th>
+      <th>Description</th>
       <th>Gatherable</th>
       <th>Gatherable type</th>
       <th colspan="3"></th>
@@ -18,6 +20,8 @@
     <% @events.each do |event| %>
       <tr>
         <td><%= event.id %></td>
+        <td><%= event.date %></td>
+        <td><%= event.start_time %></td>
         <td><%= event.event_type %></td>
         <td><%= event.description %></td>
         <td><%= event.gatherable_id %></td>

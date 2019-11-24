@@ -8,7 +8,7 @@
 
 event_types = EventType.create([
   {
-    description: 'Meeting'
+    description: 'Small group'
   },
   {
     description: 'Discipleship Community'

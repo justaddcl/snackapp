@@ -15,6 +15,7 @@ class EventsController < ApplicationController
   # GET /events/new
   def new
     @event = Event.new
+    @event_types = EventType.all
   end
 
   # GET /events/1/edit
@@ -24,17 +25,34 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
-    @event = Event.new(event_params)
+    # TODO: attach gatherable to event
+    # if params[:event][:event_type] == (EventType.find_by description: 'Discipleship Community').id
+    #   params[:event][:gatherable_type] = 'Discipleship Community'
+    #   params[:event][:gatherable_id] = '1'
+    # else
+    #   # params[:event][:gatherable_type] = 'Small group'
+    #   params[:event][:gatherable] = current_user.user_role.first.small_group
+    # end
 
-    respond_to do |format|
-      if @event.save
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
-        format.json { render :show, status: :created, location: @event }
-      else
-        format.html { render :new }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
-      end
+    @event = Event.new(event_params)
+    if @event.save
+      flash[:success] = 'Event created!'
+      redirect_to @event
+    else
+      flash[:danger] = 'Event couldn\'t be created'
+      render 'new'
     end
+
+
+    # respond_to do |format|
+    #   if @event.save
+    #     format.html { redirect_to @event, notice: 'Event was successfully created.' }
+    #     format.json { render :show, status: :created, location: @event }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @event.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /events/1
@@ -69,6 +87,6 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:event_type, :event_description, :gatherable_id, :gatherable_type)
+      params.require(:event).permit(:event_type_id, :date, :start_time, :description, :gatherable_id, :gatherable_type)
     end
 end
