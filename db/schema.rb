@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_23_215507) do
+ActiveRecord::Schema.define(version: 2019_11_25_022054) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,11 +25,11 @@ ActiveRecord::Schema.define(version: 2019_11_23_215507) do
   end
 
   create_table "discipleship_communities", force: :cascade do |t|
-    t.integer "user_id"
+    t.integer "pastor_id"
     t.string "night"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_discipleship_communities_on_user_id"
+    t.index ["pastor_id"], name: "index_discipleship_communities_on_pastor_id"
   end
 
   create_table "event_types", force: :cascade do |t|
@@ -52,12 +52,12 @@ ActiveRecord::Schema.define(version: 2019_11_23_215507) do
   end
 
   create_table "small_groups", force: :cascade do |t|
-    t.integer "user_id"
+    t.integer "leader_id"
     t.integer "discipleship_community_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["discipleship_community_id"], name: "index_small_groups_on_discipleship_community_id"
-    t.index ["user_id"], name: "index_small_groups_on_user_id"
+    t.index ["leader_id"], name: "index_small_groups_on_leader_id"
   end
 
 # Could not dump table "user_roles" because of following StandardError
@@ -74,5 +74,4 @@ ActiveRecord::Schema.define(version: 2019_11_23_215507) do
     t.boolean "admin", default: false
   end
 
-  add_foreign_key "small_groups", "users"
 end
