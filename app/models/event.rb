@@ -12,9 +12,9 @@ class Event < ApplicationRecord
 
   self.inheritance_column = nil
   enum type: {
-    small_group: 'small_group',
-    discipleship_community: 'discipleship_community',
-    party: 'party',
-    other: 'other',
+    small_group: "small_group",
+    discipleship_community: "discipleship_community",
+    party: "party",
+    other: "other",
   }
 end
