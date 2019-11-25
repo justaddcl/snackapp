@@ -1,0 +1,11 @@
+<% provide(:title, "Home") %>
+<h1>Snack.ly</h1>
+
+<% if !logged_in? %>
+  <h2>Log in</h2>
+  <%= render 'shared/login_form' %>
+<% end %>
+
+<% if logged_in? %>
+  Welcome back, <%= @user.first_name %>
+<% end %>

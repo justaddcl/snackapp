@@ -1,0 +1,27 @@
+<%= form_with(model: small_group, local: true) do |form| %>
+  <% if small_group.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(small_group.errors.count, "error") %> prohibited this small_group from being saved:</h2>
+
+      <ul>
+        <% small_group.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :user_role_id %>
+    <%= form.number_field :user_role_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :discipleship_community_id %>
+    <%= form.number_field :discipleship_community_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

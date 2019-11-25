@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Small Groups</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Group leader</th>
+      <th>Meeting night</th>
+      <th>Discipleship community pastor</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @small_groups.each do |small_group| %>
+      <tr>
+        <td><%= small_group.id %></td>
+        <td><%= small_group.leader.first_name + ' ' + small_group.leader.last_name %></td>
+        <td><%= small_group.discipleship_community.night %></td>
+        <td><%= small_group.discipleship_community.pastor.first_name + ' ' + small_group.discipleship_community.pastor.last_name%></td>
+        <td><%= link_to 'Show', small_group %></td>
+        <td><%= link_to 'Edit', edit_small_group_path(small_group) %></td>
+        <td><%= link_to 'Destroy', small_group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Small Group', new_small_group_path %>
