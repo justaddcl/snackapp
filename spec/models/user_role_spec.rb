@@ -1,5 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe UserRole, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "should have valid factories" do
+    expect(build(:user_role)).to be_valid
+  end
 end

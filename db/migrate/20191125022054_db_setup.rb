@@ -1,4 +1,17 @@
 class DbSetup < ActiveRecord::Migration[6.0]
+
+  def create_user_role_type_enum!
+    execute <<-DDL
+      CREATE TYPE user_role_type AS ENUM (
+        'discipleship_community_pastor',
+        'discipleship_community_coordinator',
+        'small_group_leader',
+        'small_group_member',
+        'small_group_coordinator'
+      );
+    DDL
+  end
+
   def change
     create_table "assignments", force: :cascade do |t|
       t.integer "user_id"
@@ -45,19 +58,11 @@ class DbSetup < ActiveRecord::Migration[6.0]
       t.index ["leader_id"], name: "index_small_groups_on_leader_id"
     end
 
-    execute <<-DDL
-      CREATE TYPE user_role_type AS ENUM (
-        'discipleship_community_pastor',
-        'discipleship_community_coordinator',
-        'small_group_leader',
-        'small_group_member',
-        'small_group_coordinator'
-      );
-    DDL
+    create_user_role_type_enum!
 
     create_table "user_roles", force: :cascade do |t|
       t.integer "user_id"
-      t.integer "group_id"
+      t.integer "small_group_id"
 
       t.column :type, :user_role_type
       t.datetime "created_at", precision: 6, null: false
@@ -65,7 +70,7 @@ class DbSetup < ActiveRecord::Migration[6.0]
     end
 
     add_index :user_roles, :user_id
-    add_index :user_roles, :group_id
+    add_index :user_roles, :small_group_id
 
     create_table "users", force: :cascade do |t|
       t.string "first_name"
