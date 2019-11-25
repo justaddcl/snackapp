@@ -3,12 +3,11 @@ class Event < ApplicationRecord
   has_many :assignments
 
   validates :description, :date, presence: true
-  # validates :date_is_in_the_future?
-  # validates :date_is_in_the_future?, if: :new_record?
+  validate :date_is_in_the_future?, if: :new_record?
 
   def date_is_in_the_future?
-    date < Date.today
-    # errors.add(:date, "can't be in the past") if date < Date.today
+    return if date >= Date.today
+    errors.add(:date, "can't be before today")
   end
 
   self.inheritance_column = nil
