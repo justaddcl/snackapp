@@ -25,11 +25,11 @@ ActiveRecord::Schema.define(version: 2019_11_23_215507) do
   end
 
   create_table "discipleship_communities", force: :cascade do |t|
-    t.integer "pastor_id"
+    t.integer "user_id"
     t.string "night"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["pastor_id"], name: "index_discipleship_communities_on_pastor_id"
+    t.index ["user_id"], name: "index_discipleship_communities_on_user_id"
   end
 
   create_table "event_types", force: :cascade do |t|
@@ -51,31 +51,17 @@ ActiveRecord::Schema.define(version: 2019_11_23_215507) do
     t.index ["event_type_id"], name: "index_events_on_event_type_id"
   end
 
-  create_table "roles", force: :cascade do |t|
-    t.string "description"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "small_groups", force: :cascade do |t|
-    t.integer "leader_id"
+    t.integer "user_id"
     t.integer "discipleship_community_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["discipleship_community_id"], name: "index_small_groups_on_discipleship_community_id"
-    t.index ["leader_id"], name: "index_small_groups_on_leader_id"
+    t.index ["user_id"], name: "index_small_groups_on_user_id"
   end
 
-  create_table "user_roles", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "role_id"
-    t.integer "small_group_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["role_id"], name: "index_user_roles_on_role_id"
-    t.index ["small_group_id"], name: "index_user_roles_on_small_group_id"
-    t.index ["user_id"], name: "index_user_roles_on_user_id"
-  end
+# Could not dump table "user_roles" because of following StandardError
+#   Unknown type 'user_role_type' for column 'type'
 
   create_table "users", force: :cascade do |t|
     t.string "first_name"
@@ -88,5 +74,5 @@ ActiveRecord::Schema.define(version: 2019_11_23_215507) do
     t.boolean "admin", default: false
   end
 
-  add_foreign_key "small_groups", "users", column: "leader_id"
+  add_foreign_key "small_groups", "users"
 end
