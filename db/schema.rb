@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_23_185526) do
+ActiveRecord::Schema.define(version: 2019_11_25_022054) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,14 +45,10 @@ ActiveRecord::Schema.define(version: 2019_11_23_185526) do
     t.string "gatherable_type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.date "date"
+    t.time "start_time"
     t.index ["description"], name: "index_events_on_description"
     t.index ["event_type_id"], name: "index_events_on_event_type_id"
-  end
-
-  create_table "roles", force: :cascade do |t|
-    t.string "description"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "small_groups", force: :cascade do |t|
@@ -64,16 +60,8 @@ ActiveRecord::Schema.define(version: 2019_11_23_185526) do
     t.index ["leader_id"], name: "index_small_groups_on_leader_id"
   end
 
-  create_table "user_roles", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "role_id"
-    t.integer "small_group_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["role_id"], name: "index_user_roles_on_role_id"
-    t.index ["small_group_id"], name: "index_user_roles_on_small_group_id"
-    t.index ["user_id"], name: "index_user_roles_on_user_id"
-  end
+# Could not dump table "user_roles" because of following StandardError
+#   Unknown type 'user_role_type' for column 'type'
 
   create_table "users", force: :cascade do |t|
     t.string "first_name"
@@ -86,5 +74,4 @@ ActiveRecord::Schema.define(version: 2019_11_23_185526) do
     t.boolean "admin", default: false
   end
 
-  add_foreign_key "small_groups", "users", column: "leader_id"
 end

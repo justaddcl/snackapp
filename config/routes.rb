@@ -9,7 +9,6 @@ Rails.application.routes.draw do
   resources :event_types
   resources :events
   resources :assignments
-  resources :roles
   resources :user_roles
 
   get '/login', to: 'sessions#new'

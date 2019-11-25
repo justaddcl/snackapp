@@ -8,7 +8,7 @@
 
 event_types = EventType.create([
   {
-    description: 'Meeting'
+    description: 'Small group'
   },
   {
     description: 'Discipleship Community'
@@ -19,7 +19,7 @@ event_types = EventType.create([
   {
     description: 'Other'
   }
-  ])
+])
 
 users = User.create([
   {
@@ -93,62 +93,48 @@ users = User.create([
   last_name = Faker::Name.last_name
   email = "fakeperson#{n+1}@faker.net"
   password = 'password'
-  User.create!(first_name: first_name,
-               last_name: last_name,
-               email: email,
-               password: password,
-               password_confirmation: password)
+  User.create!(
+    first_name: first_name,
+    last_name: last_name,
+    email: email,
+    password: password,
+    password_confirmation: password,
+  )
 end
 
-roles = Role.create([
-  {
-    description: 'Discipleship Community pastor'
-  },
-  {
-    description: 'Small group leader'
-  },
-  {
-    description: 'Small group member'
-  },
-  {
-    description: 'Discipleship Community coordinator'
-  },
-  {
-    description: 'Small group coordinator'
-  }
-])
+# binding.pry
 
-user_roles = UserRole.create([
-  {
-    user_id: users[0].id,
-    role_id: roles[0].id
-  },
-  {
-    user_id: users[1].id,
-    role_id: roles[1].id,
-    small_group_id: 1
-  },
-  {
-    user_id: users[2].id,
-    role_id: roles[2].id,
-    small_group_id: 1
-  },
-  {
-    user_id: users[6].id,
-    role_id: roles[1].id,
-    small_group_id: 1
-  },
-  {
-    user_id: users[7].id,
-    role_id: roles[3].id,
-    small_group_id: 1
-  },
-  {
-    user_id: users[8].id,
-    role_id: roles[4].id,
-    small_group_id: 1
-  }
-])
+# user_roles = UserRole.create([
+#   {
+#     user_id: users[0].id,
+#     type: UserRole.types.values[0]
+#   },
+#   {
+#     user_id: users[1].id,
+#     type: UserRole.types.values[1],
+#     small_group_id: 1
+#   },
+#   {
+#     user_id: users[2].id,
+#     type: UserRole.types.values[2],
+#     small_group_id: 1
+#   },
+#   {
+#     user_id: users[6].id,
+#     type: UserRole.types.values[1],
+#     small_group_id: 1
+#   },
+#   {
+#     user_id: users[7].id,
+#     type: UserRole.types.values[3],
+#     small_group_id: 1
+#   },
+#   {
+#     user_id: users[8].id,
+#     type: UserRole.types.values[4],
+#     small_group_id: 1
+#   }
+# ])
 
 discipleship_communities = DiscipleshipCommunity.create([
   {
