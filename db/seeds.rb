@@ -6,21 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-event_types = EventType.create([
-  {
-    description: 'Small group'
-  },
-  {
-    description: 'Discipleship Community'
-  },
-  {
-    description: 'Party'
-  },
-  {
-    description: 'Other'
-  }
-])
-
 users = User.create([
   {
     first_name: 'Discipleship Community',
