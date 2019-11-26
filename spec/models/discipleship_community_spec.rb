@@ -1,5 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe DiscipleshipCommunity, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "should have valid factories" do
+    expect(build(:discipleship_community)).to be_valid
+  end
 end
