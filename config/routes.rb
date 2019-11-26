@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   resources :users
   resources :discipleship_communities
   resources :small_groups
-  resources :event_types
   resources :events
   resources :assignments
   resources :user_roles
