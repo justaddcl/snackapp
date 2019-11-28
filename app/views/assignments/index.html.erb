@@ -16,8 +16,8 @@
     <% @assignments.each do |assignment| %>
       <tr>
         <td><%= assignment.id %></td>
-        <td><%= assignment.user %></td>
-        <td><%= assignment.event %></td>
+        <td><%= assignment.user.first_name + ' ' + assignment.user.last_name %></td>
+        <td><%= assignment.event.description %></td>
         <td><%= link_to 'Show', assignment %></td>
         <td><%= link_to 'Edit', edit_assignment_path(assignment) %></td>
         <td><%= link_to 'Destroy', assignment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
