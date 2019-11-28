@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :discipleship_community do
     association :pastor, factory: [:user, :admin]
-    night { ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"].sample }
+    night { DiscipleshipCommunity.nights.values.sample }
   end
 end
