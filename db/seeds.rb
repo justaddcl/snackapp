@@ -138,7 +138,7 @@ discipleship_communities = DiscipleshipCommunity.create([
 
 small_groups = SmallGroup.create([
   {
-    leader_id: users[1].id,
+    leader_id: users[2].id,
     discipleship_community_id: discipleship_communities[0].id
   }
 ])

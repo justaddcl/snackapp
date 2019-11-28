@@ -14,8 +14,8 @@ class EventsController < ApplicationController
 
   # GET /events/new
   def new
+    @discipleship_communities = DiscipleshipCommunities.all
     @event = Event.new
-    @event_types = EventType.all
   end
 
   # GET /events/1/edit

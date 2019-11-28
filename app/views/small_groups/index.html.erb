@@ -18,7 +18,7 @@
       <tr>
         <td><%= small_group.id %></td>
         <td><%= small_group.leader.first_name + ' ' + small_group.leader.last_name %></td>
-        <td><%= small_group.discipleship_community.night %></td>
+        <td><%= small_group.discipleship_community.night.capitalize %></td>
         <td><%= small_group.discipleship_community.pastor.first_name + ' ' + small_group.discipleship_community.pastor.last_name%></td>
         <td><%= link_to 'Show', small_group %></td>
         <td><%= link_to 'Edit', edit_small_group_path(small_group) %></td>
