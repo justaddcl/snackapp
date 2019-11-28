@@ -1,12 +1,22 @@
 class DbSetup < ActiveRecord::Migration[6.0]
 
+  def create_dc_night_enum!
+    create_enum(:dc_night,
+      :monday,
+      :tuesday,
+      :wednesday,
+      :thursday,
+      :friday
+    )
+  end
+
   def create_user_role_type_enum!
     create_enum(:user_role_type,
       :discipleship_community_pastor,
       :discipleship_community_coordinator,
       :small_group_leader,
-      :small_group_member,
-      :small_group_coordinator
+      :small_group_coordinator,
+      :small_group_member
     )
   end
 
@@ -21,9 +31,9 @@ class DbSetup < ActiveRecord::Migration[6.0]
 
   def create_enum(name, *enum_values)
     enum_value_string = enum_values.map { |c| "'#{c}'" }.join(',')
-    execute <<-DDL
+    execute <<-SQL
       CREATE TYPE #{name} AS ENUM (#{enum_value_string});
-    DDL
+    SQL
   end
 
   def change
@@ -36,9 +46,11 @@ class DbSetup < ActiveRecord::Migration[6.0]
       t.index ["user_id"], name: "index_assignments_on_user_id"
     end
 
+    create_dc_night_enum!
+
     create_table "discipleship_communities", force: :cascade do |t|
       t.integer "pastor_id"
-      t.string "night"
+      t.column :night, :dc_night
       t.datetime "created_at", precision: 6, null: false
       t.datetime "updated_at", precision: 6, null: false
       t.index ["pastor_id"], name: "index_discipleship_communities_on_pastor_id"
@@ -47,7 +59,6 @@ class DbSetup < ActiveRecord::Migration[6.0]
     create_event_type_enum!
 
     create_table "events", force: :cascade do |t|
-      t.integer "event_type_id"
       t.string "description"
       t.integer "gatherable_id"
       t.string "gatherable_type"

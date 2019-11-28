@@ -2,44 +2,27 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
 
-  before(:all) do
-    #user1 = build(:user)
+  it { should have_secure_password }
+
+  describe 'associations' do
+    it { should have_many(:assignments) }
+    it { should have_many(:user_roles) }
+  end
+
+  describe 'validations' do
+    subject { build(:user) }
+    it { should validate_presence_of(:first_name) }
+    it { should validate_presence_of(:last_name) }
+    it { should validate_presence_of(:email) }
+    it { should validate_uniqueness_of(:email).case_insensitive }
+    it { should validate_length_of(:password).is_at_least(8).on(:create) }
+    subject { build(:user, password: nil)}
+    it { should validate_presence_of(:password) }
   end
 
   it "should have valid factories" do
     expect(build(:user)).to be_valid
     expect(build(:user, :admin)).to be_valid
-  end
-
-  it "is not valid without a first name" do
-    user = build(:user, first_name: nil)
-    expect(user).to_not be_valid
-  end
-
-  it "is not valid without a last name" do
-    user = build(:user, last_name: nil)
-    expect(user).to_not be_valid
-  end
-
-  it "is not valid without an email" do
-    user = build(:user, email: nil)
-    expect(user).to_not be_valid
-  end
-
-  it "must have a unique email" do
-    user1 = create(:user, email: 'example@site.com')
-    user2 = build(:user, email: 'example@site.com')
-    expect(user2).to_not be_valid
-  end
-
-  it "is not valid without a password" do
-    user = build(:user, password: nil)
-    expect(user).to_not be_valid
-  end
-
-  it "is not valid without a password of at least 8 characters " do
-    user = build(:user, password: 'a')
-    expect(user).to_not be_valid
   end
 
 end
