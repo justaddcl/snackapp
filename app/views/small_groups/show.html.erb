@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User role:</strong>
+  <%= @small_group.user_role_id %>
+</p>
+
+<p>
+  <strong>Discipleship community:</strong>
+  <%= @small_group.discipleship_community_id %>
+</p>
+
+<%= link_to 'Edit', edit_small_group_path(@small_group) %> |
+<%= link_to 'Back', small_groups_path %>

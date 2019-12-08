@@ -1,0 +1,27 @@
+<%= form_with(model: discipleship_community, local: true) do |form| %>
+  <% if discipleship_community.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(discipleship_community.errors.count, "error") %> prohibited this discipleship_community from being saved:</h2>
+
+      <ul>
+        <% discipleship_community.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :user_role_id %>
+    <%= form.number_field :user_role_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :discipleship_community_night %>
+    <%= form.text_field :discipleship_community_night %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
