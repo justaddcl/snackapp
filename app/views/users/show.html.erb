@@ -1,3 +1,9 @@
 <%= @user.first_name %> <%= @user.last_name %>
 <br>
 <%= @user.email %>
+<% if !@user.favorite_snack.nil? %>
+  <br>
+  <%= @user.favorite_snack %>
+<% end %>
+<br>
+<%= !@user.dietary_restrictions.nil? ? @user.dietary_restrictions : 'No dietary restrictions' %>
