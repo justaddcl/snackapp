@@ -3,6 +3,12 @@
   <td><%= user.first_name %></td>
   <td><%= user.last_name %></td>
   <td><%= user.email %></td>
+  <td>
+    <%= !user.favorite_snack.nil? ? user.favorite_snack : 'None provided' %>
+  </td>
+  <td>
+    <%= !user.dietary_restrictions.nil? ? user.dietary_restrictions : 'None provided' %>
+  </td>
   <td><%= link_to 'Show', user_path(user) %></td>
   <% if current_user.admin? && !current_user?(user) %>
     <td>

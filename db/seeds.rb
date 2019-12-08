@@ -39,6 +39,8 @@ users = User.create([
     first_name: 'Group',
     last_name: 'Member',
     email: 'member@group.com',
+    favorite_snack: 'All snacks',
+    dietary_restrictions: 'No vegan',
     password: 'password',
     password_confirmation: 'password'
   },
