@@ -2,12 +2,9 @@
 @import 'config';
 
 body {
-  background-color: $indigo-3;
-  color: #333;
-  margin: 33px;
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
+  background-color: $indigo-2;
+  color: $indigo-900;
+  font-family: $proxima-nova;
 }
 
 p,
@@ -89,4 +86,64 @@ div {
 
 label {
   display: block;
+}
+
+.header {
+  background-color: white;
+  border-image: linear-gradient(135deg, #240754, #7b93db);
+  border-style: solid;
+  border-width: 4px 1920px 0px 0px;
+  display: grid;
+  grid-template-columns: 1080px;
+  height: 85px;
+  justify-items: center;
+  position: fixed;
+  top: 0px;
+  width: 100%;
+}
+
+.nav {
+  justify-items: center;
+  display: grid;
+  display: grid;
+}
+
+.nav__container {
+  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 1080px;
+}
+
+.footer {
+  border-top: 1px solid $blue-grey-50;
+  bottom: 0px;
+  display: grid;
+  height: 64px;
+  justify-items: center;
+  margin-top: 64px;
+  position: fixed;
+  width: 100%;
+}
+
+.footer__container {
+  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 1080px;
+}
+
+.footer__text {
+  color: $blue-grey-500;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.footer__text--left {
+  justify-self: start;
+}
+
+.footer__text--right {
+  justify-self: end;
 }
