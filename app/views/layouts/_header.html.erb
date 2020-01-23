@@ -1,9 +1,16 @@
-<header class="header">
-  <nav class="">
-    <div class="">
-      <%= link_to "SnackApp", root_path, class: "nav__link--home" %>
-    </div>
-    <!--
+<div class="header__gradient"></div>
+<div class="header__content">
+  <div class="header__menu">
+    <i class="header__menu-icon fas fa-bars"></i>
+  </div>
+  <div class="header__title">
+    <%= link_to "SnackApp", root_path, class: "header__title-link" %>
+  </div>
+</div>
+<nav class="">
+  <div class="">
+  </div>
+  <!--
     <ul>
       <% if logged_in? %>
         <% if current_user.admin? %>
@@ -21,5 +28,4 @@
       <% end %>
     </ul>
     -->
-  </nav>
-</header>
+</nav>
