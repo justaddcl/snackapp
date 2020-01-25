@@ -1,0 +1,125 @@
+@import "config";
+
+/* header */
+.header {
+  background-color: white;
+}
+
+.header::before {
+  background: linear-gradient(135deg, #240754, #7b93db);
+  content: '';
+  display: block;
+  height: 4px;
+}
+
+.header__content {
+  align-items: center;
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  height: 60px;
+}
+
+.header__menu {
+  background-color: inherit;
+  border: none;
+  color: $indigo-900;
+  cursor: pointer;
+  display: grid;
+  height: inherit;
+  place-items: center center;
+  width: 100%;
+  z-index: 99;
+}
+
+.header__menu-icon {
+  font-size: 18px;
+}
+
+.header__title {
+  display: grid;
+  height: inherit;
+  margin-left: -48px;
+  place-items: center center;
+}
+
+/* nav */
+
+.nav {
+  background-color: white;
+}
+
+.nav-mobile {
+  bottom: 0;
+  color: $blue-grey-700;
+  height: calc(100vh - 64px);
+  opacity: 0;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  position: fixed;
+  transform: translate3d(-100vw, 0, 0);
+  transition: all 0.3s cubic-bezier(0.68, 0, 0.265, 1.30);
+  width: 100vw;
+  z-index: 999;
+}
+
+.nav-mobile__menu {
+  list-style: none;
+  padding: 0;
+}
+
+.nav-mobile--open {
+  opacity: 1;
+  transform: translate3d(0vw, 0, 0);
+}
+
+.nav-mobile__header {
+  color: $blue-grey-500;
+  font-size: 18px;
+  letter-spacing: 0.5px;
+  padding: 8px 48px;
+  text-transform: uppercase;
+}
+
+.nav-mobile__item {
+  font-size: 30px;
+  font-weight: 700;
+  padding: 12px 48px;
+}
+
+.nav-mobile__item--medium {
+  font-size: 30px;
+  font-weight: 700;
+  padding: 8px 48px;
+}
+
+.nav-mobile__item--small {
+  font-size: 16px;
+  padding: 8px 48px;
+}
+
+.nav-mobile__item--logout {
+  color: $blue-grey-500;
+  font-size: 16px;
+  padding: 8px 48px;
+}
+
+.nav-mobile__divider {
+  background-color: $indigo-50;
+  height: 2px;
+  margin: 12px 48px;
+}
+
+// TODO: add profile styles
+
+// .nav {
+//   justify-items: center;
+//   display: grid;
+//   display: grid;
+// }
+
+// .nav__container {
+//   align-items: center;
+//   display: grid;
+//   grid-template-columns: repeat(2, 1fr);
+//   width: 1080px;
+// }
