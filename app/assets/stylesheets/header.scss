@@ -80,27 +80,31 @@
   text-transform: uppercase;
 }
 
-.nav-mobile__item {
+.nav-mobile__link {
+  color: $blue-grey-700;
+  display: block;
+  font-size: 16px;
+  padding: 8px 48px;
+  text-decoration: none;
+}
+
+.nav-mobile__link:hover {}
+
+.nav-mobile__link--large {
   font-size: 30px;
   font-weight: 700;
   padding: 12px 48px;
 }
 
-.nav-mobile__item--medium {
+.nav-mobile__link--medium {
   font-size: 30px;
   font-weight: 700;
-  padding: 8px 48px;
 }
 
-.nav-mobile__item--small {
-  font-size: 16px;
-  padding: 8px 48px;
-}
+.nav-mobile__link--small {}
 
-.nav-mobile__item--logout {
+.nav-mobile__link--logout {
   color: $blue-grey-500;
-  font-size: 16px;
-  padding: 8px 48px;
 }
 
 .nav-mobile__divider {
@@ -108,6 +112,25 @@
   height: 2px;
   margin: 12px 48px;
 }
+
+.nav-mobile__link-user {
+  display: grid;
+  grid-template-columns: auto 1fr;
+}
+
+.nav-mobile__user-avatar {
+  border-radius: 50%;
+  height: 32px;
+  margin-right: 24px;
+  width: 32px;
+}
+
+.nav-mobile__user-name {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+
 
 // TODO: add profile styles
 

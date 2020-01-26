@@ -8,20 +8,47 @@
 </div>
 <nav class="nav nav-mobile" aria-hidden="true">
   <ul class="nav-mobile__menu">
-    <li class="nav-mobile__item">Events</li>
-    <li class="nav-mobile__item">Small Groups</li>
-    <li class="nav-mobile__divider"></li>
-    <li class="nav-mobile__header">Admin</li>
-    <li class="nav-mobile__item--medium">Assign snack</li>
-    <li class="nav-mobile__item--medium">Create an event</li>
-    <li class="nav-mobile__divider"></li>
-    <!-- TODO: add name and avatar -->
-    <li class="nav-mobile__item--small">Profile</li>
-    <li class="nav-mobile__item--small">My small group</li>
-    <li class="nav-mobile__item--small">My Discipleship Community</li>
-    <li class="nav-mobile__item--small">Account settings</li>
-    <li class="nav-mobile__item--logout">Log out</li>
-
+    <% if logged_in? %>
+      <li class="nav-mobile__item">
+        <%= link_to "Events", events_path, class: 'nav-mobile__link nav-mobile__link--large' %>
+      </li>
+      <li class="nav-mobile__item">
+        <%= link_to "Small Groups", small_groups_path, class: 'nav-mobile__link nav-mobile__link--large' %>
+      </li>
+      <% if current_user.admin? %>
+        <li class="nav-mobile__divider"></li>
+        <li class="nav-mobile__header">Admin</li>
+        <li class="nav-mobile__item">
+          <a href="#" class="nav-mobile__link nav-mobile__link--medium">Assign snack</a>
+        </li>
+        <li class="nav-mobile__item">
+          <a href="#" class="nav-mobile__link nav-mobile__link--medium">Create an event</a>
+        </li>
+      <% end %>
+      <li class="nav-mobile__divider"></li>
+      <li class="nav-mobile__item">
+        <a href="<%= user_path(current_user) %>" class="nav-mobile__link nav-mobile__link-user">
+          <img class="nav-mobile__user-avatar" src="https://source.unsplash.com/collection/8470962/32x32">
+          <span class="nav-mobile__user-name"><%= current_user.first_name + ' ' + current_user.last_name %></span>
+        </a>
+      </li>
+      <li class="nav-mobile__item">
+        <a href="<%= user_path(current_user) %>" class="nav-mobile__link nav-mobile__link--small">Profile</a>
+      </li>
+      <li class="nav-mobile__item">
+        <a href="#" class="nav-mobile__link nav-mobile__link--small">My small group</a>
+      </li>
+      <li class="nav-mobile__item">
+        <a href="#" class="nav-mobile__link nav-mobile__link--small">My Discipleship Community</a>
+      </li>
+      <li class="nav-mobile__item">
+        <a href="<%= edit_user_path(current_user) %>" class="nav-mobile__link nav-mobile__link--small">Accounts settings</a>
+      </li>
+      <li class="nav-mobile__item">
+        <%= button_to "Log out", logout_path, method: :delete,
+        class: "nav-mobile__link nav-mobile__link--logout" %>
+      </li>
+    <% end %>
     <% if logged_in? %>
       <% if current_user.admin? %>
         <!--
@@ -34,7 +61,7 @@
       <!--
       <li class="nav-mobile__item"><%= link_to "Events", events_path %></li>
       <li class="nav-mobile__item"><%= link_to "Assignments", assignments_path %></li>
-      <li class="nav-mobile__item"><%= link_to "Settings", edit_user_path(current_user) %></li>
+      <li class="nav-mobile__item"><%= link_to "Account settings", edit_user_path(current_user) %></li>
       <li class="nav-mobile__item"><%= link_to "Log out", logout_path, method: :delete %></li>
       -->
     <% else %>
