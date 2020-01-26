@@ -8,6 +8,4 @@
 
 <% if logged_in? %>
   Welcome back, <%= @user.first_name %>
-  <%= link_to "Log out", logout_path, method: :delete,
-        class: "nav-mobile__link nav-mobile__link--logout" %>
 <% end %>

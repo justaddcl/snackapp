@@ -45,7 +45,7 @@
         <a href="<%= edit_user_path(current_user) %>" class="nav-mobile__link nav-mobile__link--small">Accounts settings</a>
       </li>
       <li class="nav-mobile__item">
-        <%= button_to "Log out", logout_path, method: :delete,
+        <%= link_to "Log out", logout_path, method: :delete,
         class: "nav-mobile__link nav-mobile__link--logout" %>
       </li>
     <% end %>
