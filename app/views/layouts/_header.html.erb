@@ -1,12 +1,73 @@
-<div class="header__content">
+<div class="header__content content-container">
   <button class="header__menu" aria-label="Menu" role="button" aria-controls="navigation">
     <i class="header__menu-icon fas fa-bars"></i>
   </button>
   <div class="header__title">
     <%= link_to "SnackApp", root_path, class: "header__title-link" %>
   </div>
+  <nav class="nav">
+    <ul class="nav__menu">
+      <li class="nav__item">
+        <%= link_to "Events", events_path, class: 'nav__link' %>
+      </li>
+      <li class="nav__item nav__item--ml">
+        <%= link_to "Small Groups", small_groups_path, class: 'nav__link' %>
+      </li>
+    </ul>
+  </nav>
+  <div class="auxiliary-nav">
+    <div class="auxiliary-nav__item">
+      <a href="#" class="auxiliary-nav__link">Admin <i class="fas fa-chevron-down auxiliary-nav__dropdown-icon"></i></a>
+      <div class="admin-dropdown__menu-box">
+        <ul class="admin-dropdown__menu">
+          <li class="admin-dropdown__item">Bugger</li>
+          <li class="admin-dropdown__item">Bugger</li>
+        </ul>
+      </div>
+    </div>
+    <div class="auxiliary-nav__item auxiliary-nav__item--ml auxiliary-nav__user-dropdown-link">
+      <a href="#" class="auxiliary-nav__user-link">
+        <img class="user-avatar user-avatar--32" src="https://source.unsplash.com/collection/8470962/32x32">
+      </a>
+      <div class="user-dropdown__menu-box">
+        <div class="user-dropdown__user-profile">
+          <img class="user-avatar user-avatar--48" src="https://source.unsplash.com/collection/8470962/48x48">
+          <div class="user-dropdown__user-text">
+            <span class="user-dropdown__user-name"><%= current_user.first_name + ' ' + current_user.last_name %></span>
+            <a href="" class="user-dropdown__link">
+              <button class="user-dropdown__button">Dashboard</button>
+            </a>
+          </div>
+        </div>
+        <div class="user-dropdown__divider"></div>
+        <!-- TODO: dropdown sizing -->
+        <ul class="user-dropdown__menu">
+          <li class="user-dropdown__item">
+            <a href="<%= user_path(current_user) %>" class="user-dropdown__link">Profile</a>
+          </li>
+          <li class="user-dropdown__item">
+            <a href="#" class="user-dropdown__link">My small group</a>
+          </li>
+          <li class="user-dropdown__item">
+            <a href="#" class="user-dropdown__link">My Discipleship Community</a>
+          </li>
+          <li class="user-dropdown__item">
+            <a href="<%= edit_user_path(current_user) %>" class="user-dropdown__link">Account settings</a>
+          </li>
+          <!-- TODO: come up with a more elegant spacing solution -->
+          <li class="user-dropdown__item">
+            <a href="<%= edit_user_path(current_user) %>" class="user-dropdown__link"></a>
+          </li>
+          <li class="user-dropdown__item">
+            <%= link_to "Log out", logout_path, method: :delete,
+        class: "user-dropdown__link user-dropdown__link--logout" %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>
-<nav class="nav nav-mobile" aria-hidden="true">
+<nav class="nav-mobile">
   <ul class="nav-mobile__menu">
     <% if logged_in? %>
       <li class="nav-mobile__item">
@@ -28,7 +89,7 @@
       <li class="nav-mobile__divider"></li>
       <li class="nav-mobile__item">
         <a href="<%= user_path(current_user) %>" class="nav-mobile__link nav-mobile__link-user">
-          <img class="nav-mobile__user-avatar" src="https://source.unsplash.com/collection/8470962/32x32">
+          <img class="user-avatar user-avatar--32 user-avatar--header user-avatar" src="https://source.unsplash.com/collection/8470962/32x32">
           <span class="nav-mobile__user-name"><%= current_user.first_name + ' ' + current_user.last_name %></span>
         </a>
       </li>
@@ -48,26 +109,23 @@
         <%= link_to "Log out", logout_path, method: :delete,
         class: "nav-mobile__link nav-mobile__link--logout" %>
       </li>
-    <% end %>
-    <% if logged_in? %>
-      <% if current_user.admin? %>
-        <!--
-        <li class="nav-mobile__item"><%= link_to "Users", users_path %></li>
-        <li class="nav-mobile__item"><%= link_to "User Roles", user_roles_path %></li>
-        <li class="nav-mobile__item"><%= link_to "Small Groups", small_groups_path %></li>
-        <li class="nav-mobile__item"><%= link_to "Discipleship Communities", discipleship_communities_path %></li>
-        -->
-      <% end %>
-      <!--
-      <li class="nav-mobile__item"><%= link_to "Events", events_path %></li>
-      <li class="nav-mobile__item"><%= link_to "Assignments", assignments_path %></li>
-      <li class="nav-mobile__item"><%= link_to "Account settings", edit_user_path(current_user) %></li>
-      <li class="nav-mobile__item"><%= link_to "Log out", logout_path, method: :delete %></li>
-      -->
     <% else %>
-      <!--
-      <li class="nav-mobile__item"><%= link_to "Log in", login_path %></li>
-      -->
+      <li class="nav-mobile__item">
+        <%= link_to "Log in", login_path, class: 'nav-mobile__link nav-mobile__link--large' %>
+      </li>
     <% end %>
+    <!-- if current_user.admin? -->
+    <!--
+        <li class="nav-mobile__item"> link_to "Users", users_path </li>
+        <li class="nav-mobile__item"> link_to "User Roles", user_roles_path </li>
+        <li class="nav-mobile__item"> link_to "Small Groups", small_groups_path </li>
+        <li class="nav-mobile__item"> link_to "Discipleship Communities", discipleship_communities_path </li>
+        -->
+    <!--
+      <li class="nav-mobile__item"> link_to "Events", events_path </li>
+      <li class="nav-mobile__item"> link_to "Assignments", assignments_path </li>
+      <li class="nav-mobile__item"> link_to "Account settings", edit_user_path(current_user) </li>
+      <li class="nav-mobile__item"> link_to "Log out", logout_path, method: :delete </li>
+      -->
   </ul>
 </nav>

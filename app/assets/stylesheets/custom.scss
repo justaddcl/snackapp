@@ -102,10 +102,15 @@ label {
   height: 100vh;
 }
 
+.content-container {
+  padding-left: 48px;
+  padding-right: 48px;
+}
+
 /* tablet styles */
 @media screen and (min-width: 1023px) {
   .app-container {
-    grid-template-rows: 64px 1fr 64px;
+    grid-template-rows: 85px 1fr 64px;
   }
 }
 
