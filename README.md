@@ -5,9 +5,17 @@ The use of this app will aim to be the go-to place to see and schedule snack vol
 
 ## Quick-start dev instructions
 
+Verify you have [Postgres](https://chartio.com/resources/tutorials/how-to-start-postgresql-server-on-mac-os-x/), [X-Code command line tools](http://osxdaily.com/2014/02/12/install-command-line-tools-mac-os-x/) and bundler installed
+
+Run `bundle install --path vendor/bundle`
+
 Start up Postgres `pg_ctl -D /usr/local/var/postgres start`
 
-Start rails server `rails s`
+Create a `snackapp` super user. Check out this [guide](https://www.codementor.io/@engineerapart/getting-started-with-postgresql-on-mac-osx-are8jcopb) for help.
+
+Set up the database `rails db:setup`, then `rails db:reset`
+
+Start rails server `rails s` (You may need to update Yarn packages `yarn install --check-files`)
 
 When you're done, stop the rails server then stop postgres using `pg_ctl -D /usr/local/var/postgres stop`.
 
