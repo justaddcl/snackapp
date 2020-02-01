@@ -26,13 +26,6 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     # TODO: attach gatherable to event
-    # if params[:event][:event_type] == (EventType.find_by description: 'Discipleship Community').id
-    #   params[:event][:gatherable_type] = 'Discipleship Community'
-    #   params[:event][:gatherable_id] = '1'
-    # else
-    #   # params[:event][:gatherable_type] = 'Small group'
-    #   params[:event][:gatherable] = current_user.user_role.first.small_group
-    # end
 
     @event = Event.new(event_params)
     if @event.save

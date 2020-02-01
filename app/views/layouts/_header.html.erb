@@ -1,21 +1,191 @@
-<header>
-  <nav>
-    <ul>
-      <li><%= link_to "SnackApp", root_path %></li>
-      <% if logged_in? %>
-        <% if current_user.admin? %>
-          <li><%= link_to "Users", users_path %></li>
-          <li><%= link_to "User Roles", user_roles_path %></li>
-          <li><%= link_to "Small Groups", small_groups_path %></li>
-          <li><%= link_to "Discipleship Communities", discipleship_communities_path %></li>
-        <% end %>
-        <li><%= link_to "Events", events_path %></li>
-        <li><%= link_to "Assignments", assignments_path %></li>
-        <li><%= link_to "Settings", edit_user_path(current_user) %></li>
-        <li><%= link_to "Log out", logout_path, method: :delete %></li>
-      <% else %>
-        <li><%= link_to "Log in", login_path %></li>
+<div class="header__content content-container">
+  <button class="header__menu" aria-label="Menu" role="button" aria-controls="navigation">
+    <i class="header__menu-icon fas fa-bars"></i>
+  </button>
+  <div class="header__title">
+    <%= link_to "SnackApp", root_path, class: "header__title-link" %>
+  </div>
+  <% if logged_in? %>
+    <nav class="nav">
+      <ul class="nav__menu">
+        <li class="nav__item">
+          <%= link_to "Events", events_path, class: 'nav__link' %>
+        </li>
+        <li class="nav__item nav__item--ml">
+          <%= link_to "Small Groups", small_groups_path, class: 'nav__link' %>
+        </li>
+      </ul>
+    </nav>
+  <% end %>
+  <div class="auxiliary-nav">
+    <% if logged_in? %>
+      <% if current_user.admin? %>
+        <div class="auxiliary-nav__item">
+          <a href="#" class="auxiliary-nav__link">Admin <i class="fas fa-chevron-down auxiliary-nav__dropdown-icon"></i></a>
+          <div class="auxiliary-dropdown">
+            <div class="admin-dropdown__menu-box">
+              <ul class="auxiliary-dropdown__menu admin-dropdown__menu--admin">
+                <li class="auxiliary-dropdown__item">
+                  <a href="<%= users_path %>" class="auxiliary-dropdown__link">Users</a>
+                </li>
+                <li class="auxiliary-dropdown__item">
+                  <a href="<%= user_roles_path %>" class="auxiliary-dropdown__link">User roles</a>
+                </li>
+                <li class="auxiliary-dropdown__item">
+                  <a href="<%= small_groups_path %>" class="auxiliary-dropdown__link">Small groups</a>
+                </li>
+                <li class="auxiliary-dropdown__item">
+                  <a href="<%= discipleship_communities_path %>" class="auxiliary-dropdown__link">Discipleship Communities</a>
+                </li>
+                <li class="auxiliary-dropdown__item">
+                  <a href="<%= events_path %>" class="auxiliary-dropdown__link">Events</a>
+                </li>
+                <li class="auxiliary-dropdown__item">
+                  <a href="<%= assignments_path %>" class="auxiliary-dropdown__link">Assignments</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- /admin dropdown -->
+        <div class="auxiliary-nav__item">
+          <a href="#" class="auxiliary-nav__link">Coordinator <i class="fas fa-chevron-down auxiliary-nav__dropdown-icon"></i></a>
+          <div class="auxiliary-dropdown">
+            <div class="admin-dropdown__menu-box">
+              <ul class="auxiliary-dropdown__menu admin-dropdown__menu--coordinator">
+                <li class="auxiliary-dropdown__item">
+                  <a href="<%= users_path %>" class="auxiliary-dropdown__link auxiliary-dropdown__link--coordinator">
+                    <div class="coordinator-dropdown__icon">
+                      <i class="fas fa-user-plus"></i>
+                    </div>
+                    <div class="coordinator-dropdown__text">
+                      <div class="coordinator-dropdown__title">Assign snack</div>
+                      <div class="coordinator-dropdown__description">Assign a user to bring a snack for an event</div>
+                    </div>
+                  </a>
+                </li>
+                <li class="auxiliary-dropdown__item">
+                  <a href="<%= users_path %>" class="auxiliary-dropdown__link auxiliary-dropdown__link--coordinator">
+                    <div class="coordinator-dropdown__icon">
+                      <i class="fas fa-calendar-day"></i>
+                    </div>
+                    <div class="coordinator-dropdown__text">
+                      <div class="coordinator-dropdown__title">Create an event</div>
+                      <div class="coordinator-dropdown__description">Create a new event for your small group or Discipleship Community</div>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- coordinator dropdown -->
       <% end %>
-    </ul>
-  </nav>
-</header>
+      <div class="auxiliary-nav__item auxiliary-nav__item--ml auxiliary-nav__user-dropdown-link">
+        <a href="#" class="auxiliary-nav__link auxiliary-nav__user-link">
+          <img class="user-avatar user-avatar--32" src="https://source.unsplash.com/collection/8470962/32x32">
+        </a>
+        <div class="auxiliary-dropdown auxiliary-dropdown--user">
+          <div class="user-dropdown__menu-box">
+            <div class="user-dropdown__user-profile">
+              <img class="user-avatar user-avatar--48" src="https://source.unsplash.com/collection/8470962/48x48">
+              <div class="user-dropdown__user-text">
+                <span class="user-dropdown__user-name"><%= current_user.first_name + ' ' + current_user.last_name %></span>
+                <a href="" class="user-dropdown__link">
+                  <button class="user-dropdown__button">Dashboard</button>
+                </a>
+              </div>
+            </div>
+            <div class="user-dropdown__menu-container">
+              <ul class="auxiliary-dropdown__menu">
+                <li class="auxiliary-dropdown__item">
+                  <a href="<%= user_path(current_user) %>" class="auxiliary-dropdown__link">Profile</a>
+                </li>
+                <li class="auxiliary-dropdown__item">
+                  <a href="#" class="auxiliary-dropdown__link">My small group</a>
+                </li>
+                <li class="auxiliary-dropdown__item">
+                  <a href="#" class="auxiliary-dropdown__link">My Discipleship Community</a>
+                </li>
+                <li class="auxiliary-dropdown__item">
+                  <a href="<%= edit_user_path(current_user) %>" class="auxiliary-dropdown__link">Account settings</a>
+                </li>
+                <li class="auxiliary-dropdown__item user-dropdown__item--logout">
+                  <%= link_to "Log out", logout_path, method: :delete, class: "auxiliary-dropdown__link user-dropdown__link--logout" %>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% else %>
+      <div class="auxiliary-nav__item">
+        <%= link_to "Log in", login_path, class: 'auxiliary-nav__link' %>
+      </div>
+    <% end %>
+    <!-- /user dropdown -->
+  </div>
+  <!-- /auxiliary menu -->
+</div>
+<nav class="nav-mobile">
+  <ul class="nav-mobile__menu">
+    <% if logged_in? %>
+      <li class="nav-mobile__item">
+        <%= link_to "Events", events_path, class: 'nav-mobile__link nav-mobile__link--large' %>
+      </li>
+      <li class="nav-mobile__item">
+        <%= link_to "Small Groups", small_groups_path, class: 'nav-mobile__link nav-mobile__link--large' %>
+      </li>
+      <% if current_user.admin? %>
+        <li class="nav-mobile__divider"></li>
+        <li class="nav-mobile__header">Admin</li>
+        <li class="nav-mobile__item">
+          <a href="#" class="nav-mobile__link nav-mobile__link--medium">Assign snack</a>
+        </li>
+        <li class="nav-mobile__item">
+          <a href="#" class="nav-mobile__link nav-mobile__link--medium">Create an event</a>
+        </li>
+      <% end %>
+      <li class="nav-mobile__divider"></li>
+      <li class="nav-mobile__item">
+        <a href="<%= user_path(current_user) %>" class="nav-mobile__link nav-mobile__link-user">
+          <img class="user-avatar user-avatar--32 user-avatar--header user-avatar" src="https://source.unsplash.com/collection/8470962/32x32">
+          <span class="nav-mobile__user-name"><%= current_user.first_name + ' ' + current_user.last_name %></span>
+        </a>
+      </li>
+      <li class="nav-mobile__item">
+        <a href="<%= user_path(current_user) %>" class="nav-mobile__link nav-mobile__link--small">Profile</a>
+      </li>
+      <li class="nav-mobile__item">
+        <a href="#" class="nav-mobile__link nav-mobile__link--small">My small group</a>
+      </li>
+      <li class="nav-mobile__item">
+        <a href="#" class="nav-mobile__link nav-mobile__link--small">My Discipleship Community</a>
+      </li>
+      <li class="nav-mobile__item">
+        <a href="<%= edit_user_path(current_user) %>" class="nav-mobile__link nav-mobile__link--small">Accounts settings</a>
+      </li>
+      <li class="nav-mobile__item">
+        <%= link_to "Log out", logout_path, method: :delete,
+        class: "nav-mobile__link nav-mobile__link--logout" %>
+      </li>
+    <% else %>
+      <li class="nav-mobile__item">
+        <%= link_to "Log in", login_path, class: 'nav-mobile__link nav-mobile__link--large' %>
+      </li>
+    <% end %>
+    <!-- if current_user.admin? -->
+    <!--
+        <li class="nav-mobile__item"> link_to "Users", users_path </li>
+        <li class="nav-mobile__item"> link_to "User Roles", user_roles_path </li>
+        <li class="nav-mobile__item"> link_to "Small Groups", small_groups_path </li>
+        <li class="nav-mobile__item"> link_to "Discipleship Communities", discipleship_communities_path </li>
+        -->
+    <!--
+      <li class="nav-mobile__item"> link_to "Events", events_path </li>
+      <li class="nav-mobile__item"> link_to "Assignments", assignments_path </li>
+      <li class="nav-mobile__item"> link_to "Account settings", edit_user_path(current_user) </li>
+      <li class="nav-mobile__item"> link_to "Log out", logout_path, method: :delete </li>
+      -->
+  </ul>
+</nav>

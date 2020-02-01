@@ -1,0 +1,48 @@
+@import "config";
+
+body {
+  background-color: $indigo-2;
+  color: $indigo-900;
+  font-family: $proxima-nova;
+}
+
+/* app container */
+.app-container {
+  display: grid;
+  grid-template-rows: 64px 1fr 48px;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+  height: 100vh;
+}
+
+.content-container {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.main {
+  margin-top: 16px;
+}
+
+/* tablet styles */
+@media screen and (min-width: 1024px) {
+  .app-container {
+    grid-template-rows: 85px 1fr 64px;
+  }
+
+  .content-container {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+
+@media screen and (min-width: 1280px) {}
+
+@media screen and (min-width: 1440px) {
+  .content-container {
+    padding-left: 48px;
+    padding-right: 48px;
+  }
+}
