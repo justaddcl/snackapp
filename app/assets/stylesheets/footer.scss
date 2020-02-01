@@ -10,8 +10,6 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   height: 100%;
-  margin: auto;
-  width: calc(100% - (16px * 2));
 }
 
 .footer__text {
@@ -21,18 +19,14 @@
   text-transform: uppercase;
 }
 
-// .footer__text--left {
-//   justify-self: start;
-// }
-
 .footer__text--right {
   justify-self: end;
 }
 
 /* desktop styles */
-@media screen and (min-width: 1112px) {
+@media screen and (min-width: 1024px) {
   .footer__container {
-    width: 1080px;
+    // width: 1080px;
   }
 
   .footer__text {

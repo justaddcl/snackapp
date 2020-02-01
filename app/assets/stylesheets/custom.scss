@@ -1,12 +1,7 @@
 @import "reset";
 @import "config";
+@import "core";
 @import "header";
-
-body {
-  background-color: $indigo-2;
-  color: $indigo-900;
-  font-family: $proxima-nova;
-}
 
 /*
 p,
@@ -90,29 +85,6 @@ label {
   display: block;
 }
 */
-
-/* app container */
-.app-container {
-  display: grid;
-  grid-template-rows: 64px 1fr 48px;
-  grid-template-areas:
-    "header"
-    "main"
-    "footer";
-  height: 100vh;
-}
-
-.content-container {
-  padding-left: 48px;
-  padding-right: 48px;
-}
-
-/* tablet styles */
-@media screen and (min-width: 1023px) {
-  .app-container {
-    grid-template-rows: 85px 1fr 64px;
-  }
-}
 
 /* debug styles */
 .debug {

@@ -16,7 +16,9 @@
         </li>
       </ul>
     </nav>
-    <div class="auxiliary-nav">
+  <% end %>
+  <div class="auxiliary-nav">
+    <% if logged_in? %>
       <% if current_user.admin? %>
         <div class="auxiliary-nav__item">
           <a href="#" class="auxiliary-nav__link">Admin <i class="fas fa-chevron-down auxiliary-nav__dropdown-icon"></i></a>
@@ -45,6 +47,7 @@
             </div>
           </div>
         </div>
+        <!-- /admin dropdown -->
         <div class="auxiliary-nav__item">
           <a href="#" class="auxiliary-nav__link">Coordinator <i class="fas fa-chevron-down auxiliary-nav__dropdown-icon"></i></a>
           <div class="auxiliary-dropdown">
@@ -76,6 +79,7 @@
             </div>
           </div>
         </div>
+        <!-- coordinator dropdown -->
       <% end %>
       <div class="auxiliary-nav__item auxiliary-nav__item--ml auxiliary-nav__user-dropdown-link">
         <a href="#" class="auxiliary-nav__link auxiliary-nav__user-link">
@@ -114,10 +118,15 @@
           </div>
         </div>
       </div>
-    </div>
+    <% else %>
+      <div class="auxiliary-nav__item">
+        <%= link_to "Log in", login_path, class: 'auxiliary-nav__link' %>
+      </div>
+    <% end %>
+    <!-- /user dropdown -->
   </div>
   <!-- /auxiliary menu -->
-<% end %>
+</div>
 <nav class="nav-mobile">
   <ul class="nav-mobile__menu">
     <% if logged_in? %>

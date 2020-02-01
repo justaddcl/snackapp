@@ -18,7 +18,7 @@
       <header class="header">
         <%= render 'layouts/header' %>
       </header>
-      <main class="main content-container">
+      <main class="main">
         <% flash.each do |message_type, message| %>
           <div class="alert alert-<%= message_type %>"><%= message %></div>
         <% end %>
@@ -30,7 +30,7 @@
         </div>
         -->
       </main>
-      <footer class="footer content-container">
+      <footer class="footer">
         <%= render 'layouts/footer' %>
       </footer>
     </div>
