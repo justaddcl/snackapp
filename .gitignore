@@ -4,14 +4,25 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile '~/.gitignore_global'
 
-# Ignore bundler config.
-/.bundle
-
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
 !/log/.keep
 !/tmp/.keep
+
+# dotenv, dotenv-rails
+# TODO Comment out these rules if environment variables can be committed
+.env
+.env.*
+
+# Ignore master key for decrypting credentials and more.
+# TODO Comment out this rule if you are OK with secrets being uploaded to the repo
+config/initializers/secret_token.rb
+config/master.key
+
+## Environment normalization:
+/.bundle
+/vendor/bundle
 
 # Ignore uploaded files in development.
 /storage/*
@@ -19,9 +30,6 @@
 
 /public/assets
 .byebug_history
-
-# Ignore master key for decrypting credentials and more.
-/config/master.key
 
 /public/packs
 /public/packs-test
@@ -33,7 +41,3 @@ yarn-debug.log*
 .DS_Store
 
 db/structure.sql
-
-Copy of SnackAppStyleGuide2.xd
-
-vendor/bundle/
