@@ -10,8 +10,7 @@
       <th>Start time</th>
       <th>Event type</th>
       <th>Description</th>
-      <th>Gatherable</th>
-      <th>Gatherable type</th>
+      <th>For</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -22,14 +21,26 @@
         <td><%= event.id %></td>
         <td><%= event.date %></td>
         <td><%= event.start_time %></td>
-        <td><%= event.event_type %></td>
+        <td><%= event.type.humanize %></td>
         <td><%= event.description %></td>
-        <td><%= event.gatherable_id %></td>
-        <td><%= event.gatherable_type %></td>
+        <!-- TODO: add dynamic query based on gatherable_type -->
+        <% if event.gatherable.is_a? DiscipleshipCommunity %>
+          <% @leader = event.gatherable.pastor.first_name %>
+        <% else %>
+          <% @leader = event.gatherable.leader.first_name %>
+        <% end %>
+        <td><%= @leader + "'s " + event.gatherable_type.underscore.humanize.downcase%></td>
         <td><%= link_to 'Show', event %></td>
         <td><%= link_to 'Edit', edit_event_path(event) %></td>
         <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
+      <% event.assignments.each do |assignment| %>
+        <tr>
+          <td></td>
+          <td><%= assignment.user.first_name + ' ' + assignment.user.last_name %></td>
+          <td><%= link_to 'Show', assignment %></td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>

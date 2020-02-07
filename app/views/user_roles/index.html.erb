@@ -18,7 +18,7 @@
       <tr>
         <td><%= user_role.id %></td>
         <td><%= link_to user_role.user.first_name + ' ' + user_role.user.last_name, user_path(user_role.id) %></td>
-        <td><%= user_role.role.description %></td>
+        <td><%= user_role.type.humanize %></td>
         <td>
           <% if user_role.small_group %>
             <%= user_role.small_group.leader.first_name + ' ' + user_role.small_group.leader.last_name + ' - ' + user_role.small_group.discipleship_community.night %>
