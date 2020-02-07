@@ -1,0 +1,14 @@
+@import "config";
+
+.hero-image {
+  height: 256px;
+  margin-bottom: 16px;
+  width: 100vw;
+}
+
+.login-form__header {
+  color: $indigo-700;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}

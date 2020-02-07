@@ -1,14 +1,21 @@
-<%= form_for(:session, url: login_path) do |f| %>
-  <%= f.label :email%>
-  <%= f.email_field :email%>
+<%= form_for(:session, url: login_path, :html => {:class => 'form'}) do |f| %>
+  <%= f.label :email, class: "form__label" %>
+  <%= f.email_field :email, class: "form__input" %>
 
-  <%= f.label :password %>
-  <%= f.password_field :password %>
+  <%= f.label :password, class: "form__label" %>
+  <%= f.password_field :password, class: "form__input" %>
 
-  <%= f.label :remember_me do %>
-    <%= f.check_box :remember_me %>
-    <span>Remember me on this device</span>
-  <% end %>
+  <div class="form__group">
+    <%= f.label :remember_me, class: "form__label" do %>
+      <%= f.check_box :remember_me %>
+      <span>Remember me</span>
+    <% end %>
 
-  <%= f.submit "Log in"%>
+    <div>Show password</div>
+  </div>
+
+  <%= f.submit "Sign in", class: "form__button" %>
+  <a href="" class="form__button--secondary">Forgot password?</a>
+  <div class="form__divider"></div>
+  <p class="form__text">Don't have an account? <a href="<%= register_path %>" class="form__link link">Sign up</a></p>
 <% end %>

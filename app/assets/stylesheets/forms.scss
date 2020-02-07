@@ -1,0 +1,73 @@
+@import "config";
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form__label {
+  color: $indigo-500;
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.form__input {
+  background-color: white;
+  border: none;
+  border-radius: 4px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.16);
+  color: $blue-grey-900;
+  font-size: 16px;
+  font-weight: 700;
+  height: 36px;
+  margin-bottom: 16px;
+  padding: 8px 16px;
+}
+
+.form__input:focus {
+  border-bottom: 1px solid $blue-grey-500;
+  transition: all 0.3 ease-in-out;
+}
+
+.form__button {
+  background-color: $indigo-700;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  margin-top: 16px;
+  padding: 8px;
+}
+
+.form__button--secondary {
+  color: $indigo-500;
+  font-size: 14px;
+  font-weight: 700;
+  margin-top: 16px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.form__divider {
+  background-color: $indigo-50;
+  height: 2px;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+.form__text {
+  color: $blue-grey-700;
+}
+
+.form__link {
+  color: $indigo-500;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.form__group {
+  display: flex;
+  justify-content: space-between;
+}
