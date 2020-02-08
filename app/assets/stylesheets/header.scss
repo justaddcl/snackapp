@@ -6,6 +6,11 @@
   box-shadow: inset 0 -2px 0 0 $blue-grey-100;
 }
 
+.header--no-frame {
+  background: linear-gradient(135deg, #240754, #7b93db);
+  height: 4px;
+}
+
 .header::before {
   background: linear-gradient(135deg, #240754, #7b93db);
   content: "";

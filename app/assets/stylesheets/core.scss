@@ -18,6 +18,8 @@ body {
 }
 
 .app-container--no-frame {
+  display: grid;
+  grid-template-rows: 4px 1fr;
   height: 100vh;
 }
 
@@ -33,10 +35,6 @@ body {
 
 .main {
   margin-top: 16px;
-}
-
-.link {
-  text-decoration: none;
 }
 
 /* tablet styles */

@@ -6,9 +6,13 @@
 }
 
 .form__label {
-  color: $indigo-500;
+  color: $blue-grey-500;
   font-size: 16px;
   margin-bottom: 8px;
+}
+
+.form__label--checkbox {
+  color: $blue-grey-700;
 }
 
 .form__input {
@@ -29,26 +33,6 @@
   transition: all 0.3 ease-in-out;
 }
 
-.form__button {
-  background-color: $indigo-700;
-  border: none;
-  border-radius: 4px;
-  color: white;
-  font-size: 18px;
-  font-weight: 700;
-  margin-top: 16px;
-  padding: 8px;
-}
-
-.form__button--secondary {
-  color: $indigo-500;
-  font-size: 14px;
-  font-weight: 700;
-  margin-top: 16px;
-  text-align: center;
-  text-decoration: none;
-}
-
 .form__divider {
   background-color: $indigo-50;
   height: 2px;
@@ -63,8 +47,15 @@
 
 .form__link {
   color: $indigo-500;
+}
+
+.form__link--primary {
   font-size: 16px;
   font-weight: 700;
+}
+
+.form__link--secondary {
+  font-size: 14px;
 }
 
 .form__group {

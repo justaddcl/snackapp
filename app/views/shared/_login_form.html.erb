@@ -6,16 +6,16 @@
   <%= f.password_field :password, class: "form__input" %>
 
   <div class="form__group">
-    <%= f.label :remember_me, class: "form__label" do %>
+    <%= f.label :remember_me do %>
       <%= f.check_box :remember_me %>
-      <span>Remember me</span>
+      <span class="form__label--checkbox">Remember me</span>
     <% end %>
 
-    <div>Show password</div>
+    <div id="show-password-link" class="form__link form__link--secondary link">Show password</div>
   </div>
 
-  <%= f.submit "Sign in", class: "form__button" %>
-  <a href="" class="form__button--secondary">Forgot password?</a>
+  <%= f.submit "Sign in", class: "button button--primary" %>
+  <a href="" class="link link--secondary">Forgot password?</a>
   <div class="form__divider"></div>
-  <p class="form__text">Don't have an account? <a href="<%= register_path %>" class="form__link link">Sign up</a></p>
+  <p class="form__text">Don't have an account? <a href="<%= register_path %>" class="form__link form__link--primary link">Sign up</a></p>
 <% end %>
