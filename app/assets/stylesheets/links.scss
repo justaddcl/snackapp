@@ -14,3 +14,9 @@
   margin-top: 16px;
   text-align: center;
 }
+
+@media screen and (min-width: 1024px) {
+  .link--secondary {
+    text-align: left;
+  }
+}

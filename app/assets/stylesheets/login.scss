@@ -1,14 +1,13 @@
 @import "config";
 
-.hero-image {
-  height: 256px;
-  margin-bottom: 16px;
-  width: 100vw;
+.login-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
-.login-form__header {
-  color: $indigo-700;
-  font-size: 24px;
-  font-weight: 700;
-  margin-bottom: 16px;
+@media screen and (min-width: 960px) {
+  .login-container {
+    flex-direction: row;
+  }
 }

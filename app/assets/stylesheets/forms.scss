@@ -1,5 +1,10 @@
 @import "config";
 
+.form-container--large {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
 .form {
   display: flex;
   flex-direction: column;
@@ -61,4 +66,26 @@
 .form__group {
   display: flex;
   justify-content: space-between;
+}
+
+.form--login {}
+
+@media screen and (min-width: 768px) {
+  .form-container--large {
+    width: 416px;
+  }
+
+  .form--login {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    padding-top: 48px;
+  }
+}
+
+@media screen and (min-width: 960px) {
+
+  .form--login {
+    align-items: center;
+  }
 }
