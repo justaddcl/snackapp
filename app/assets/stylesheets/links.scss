@@ -1,0 +1,22 @@
+@import 'config';
+
+.link {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.link--primary {}
+
+.link--secondary {
+  color: $indigo-500;
+  font-size: 14px;
+  font-weight: 700;
+  margin-top: 16px;
+  text-align: center;
+}
+
+@media screen and (min-width: 1024px) {
+  .link--secondary {
+    text-align: left;
+  }
+}

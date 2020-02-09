@@ -17,9 +17,20 @@ body {
   height: 100vh;
 }
 
+.app-container--no-frame {
+  display: grid;
+  grid-template-rows: 4px 1fr;
+  height: 100vh;
+}
+
 .content-container {
   padding-left: 16px;
   padding-right: 16px;
+}
+
+.main,
+.main--no-frame {
+  margin-bottom: 32px;
 }
 
 .main {

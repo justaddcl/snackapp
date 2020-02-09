@@ -1,0 +1,13 @@
+@import "config";
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+@media screen and (min-width: 960px) {
+  .login-container {
+    flex-direction: row;
+  }
+}

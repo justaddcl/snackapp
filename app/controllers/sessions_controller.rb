@@ -3,6 +3,7 @@ class SessionsController < ApplicationController
 
   def new
     redirect_to root_url if logged_in?
+    render layout: "no_site_frame"
   end
 
   def create

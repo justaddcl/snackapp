@@ -1,0 +1,38 @@
+@import 'config';
+
+.image--mobile-only {
+  object-fit: cover;
+}
+
+.image--not-mobile {
+  display: none;
+}
+
+.hero-image--login {
+  height: 256px;
+  margin-bottom: 16px;
+  width: 100vw;
+}
+
+@media screen and (min-width: 960px) {
+  .image--mobile-only {
+    display: none;
+  }
+
+  .image--not-mobile {
+    display: block;
+    object-fit: cover;
+  }
+
+  .hero-image--login {
+    height: calc(100vh - 4px);
+    margin-bottom: 0px;
+    width: 450px;
+  }
+}
+
+@media screen and (min-width: 1100px) {
+  .hero-image--login {
+    width: 640px;
+  }
+}
