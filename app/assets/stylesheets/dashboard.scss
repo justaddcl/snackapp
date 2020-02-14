@@ -1,0 +1,45 @@
+@import 'config';
+
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-header {
+  display: flex;
+  margin-top: 16px;
+  margin-bottom: 32px;
+}
+
+// TODO: add avatar background gradient
+.dashboard-header__avatar {
+  margin-right: 16px;
+}
+
+.dashboard-header__title {
+  font-size: 24px;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+
+// TODO: move to appropriate file
+.reminder {
+  margin-bottom: 24px;
+}
+
+.dashboard-events__title {
+  color: $blue-grey-700;
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.dashboard-events__list {
+  display: grid;
+  grid-gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(344px, 1fr));
+}
+
+// TODO: move to appropriate file
+.user-name {
+  font-weight: 700;
+}

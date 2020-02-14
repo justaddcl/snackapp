@@ -38,6 +38,13 @@ body {
   margin-top: 16px;
 }
 
+.divider-line {
+  background-color: $indigo-50;
+  height: 2px;
+  margin-bottom: 16px;
+  width: 200px;
+}
+
 /* tablet styles */
 @media screen and (min-width: 1024px) {
   .app-container {
