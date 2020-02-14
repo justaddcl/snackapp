@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
-  skip_before_action :logged_in_user, only: [:new, :create]
+  skip_before_action :logged_in_user, only: %i[new create]
   # # before_action :logged_in_user, only: [:edit, :update, :destroy]
-  before_action :correct_user, only: [:edit, :update]
-  before_action :admin_user, only: [:index, :destroy]
+  before_action :correct_user, only: %i[edit update]
+  before_action :admin_user, only: %i[index destroy]
 
   def index
     @users = User.paginate(page: params[:page])
@@ -10,6 +12,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    render layout: 'no_site_frame'
   end
 
   def show
@@ -32,7 +35,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
@@ -50,8 +52,9 @@ class UsersController < ApplicationController
   end
 
   private
+
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :favorite_snack, :dietary_restrictions,
-      :password, :password_confirmation)
+                                 :password, :password_confirmation)
   end
 end

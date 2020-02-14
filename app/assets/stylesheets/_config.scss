@@ -1,14 +1,18 @@
 /* colors */
+
+$gradient-purple: #240754;
+$gradient-blue: #7b93db;
+
 $indigo-2: #f8fafc;
-$indigo-50: #E0E8F9;
-$indigo-100: #BED0F7;
-$indigo-200: #98AEEB;
-$indigo-300: #7B93DB;
-$indigo-400: #647ACB;
-$indigo-500: #4C63B6;
-$indigo-600: #4055A8;
-$indigo-700: #35469C;
-$indigo-800: #2D3A8C;
+$indigo-50: #e0e8f9;
+$indigo-100: #bed0f7;
+$indigo-200: #98aeeb;
+$indigo-300: #7b93db;
+$indigo-400: #647acb;
+$indigo-500: #4c63b6;
+$indigo-600: #4055a8;
+$indigo-700: #35469c;
+$indigo-800: #2d3a8c;
 $indigo-900: #19216C;
 
 $blue-grey-50: #f0f4f8;
@@ -22,9 +26,24 @@ $blue-grey-700: #334e68;
 $blue-grey-800: #243b53;
 $blue-grey-900: #102a43;
 
-$gradient-purple: #240754;
-$gradient-blue: #7b93db;
+$green-50: #f0fcf9;
+$green-100: #c6f7e9;
+$green-200: #8eedd1;
+$green-300: #5fe3c0;
+$green-400: #2dcca7;
+$green-500: #17b897;
+$green-600: #079a82;
+$green-700: #048271;
+$green-800: #016457;
+$green-900: #004440;
 
-/* fonts */
-$proxima-nova: proxima-nova,
-sans-serif;
+$red-50: #ffe3e3;
+$red-100: #ffbdbd;
+$red-200: #ff9b9b;
+$red-300: #f86a6a;
+$red-400: #ef4e4e;
+$red-500: #e12d39;
+$red-600: #cf1124;
+$red-700: #ab091e;
+$red-800: #8a041a;
+$red-900: #610316;
