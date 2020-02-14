@@ -1,0 +1,11 @@
+@import 'config';
+
+@media screen and (min-width: 1024px) {
+  .left {
+    padding-right: 8px;
+  }
+
+  .right {
+    padding-left: 8px;
+  }
+}

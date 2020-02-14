@@ -1,4 +1,5 @@
-@import "config";
+@import 'config';
+@import 'typography';
 
 .form-container--large {
   padding-left: 16px;
@@ -33,6 +34,30 @@
   padding: 8px 16px;
 }
 
+.form__input--password {
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  flex: 1;
+}
+
+.form__password-toggle {
+  align-content: center;
+  background-color: $blue-grey-50;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.16);
+  color: $blue-grey-400;
+  cursor: pointer;
+  display: flex;
+  height: 36px;
+  justify-content: center;
+  padding: 8px;
+  width: 48px;
+}
+
+.form__input-group {
+  display: flex;
+}
+
 .form__input:focus {
   border-bottom: 1px solid $blue-grey-500;
   transition: all 0.3 ease-in-out;
@@ -65,27 +90,85 @@
 
 .form__group {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
 }
 
-.form--login {}
+.form__group--half {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
 
-@media screen and (min-width: 768px) {
+.form--user {
+  padding-bottom: 32px;
+}
+
+.password-requirements {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.password-requirement {
+  border-radius: 4px;
+  margin-bottom: 8px;
+  padding: 8px 16px;
+}
+
+.password-requirement--default {
+  background-color: $blue-grey-100;
+  color: $blue-grey-700;
+}
+
+.password-requirement--not-met {
+  background-color: $red-50;
+  color: $red-700;
+
+  &::before {
+    content: "\f00d";
+    font-family: "Font Awesome 5 Free";
+    margin-right: 8px;
+  }
+}
+
+.password-requirement--met {
+  background-color: $green-50;
+  color: $green-700;
+
+  &::before {
+    content: '\f00c';
+    font-family: $font-awesome;
+    margin-right: 8px;
+  }
+}
+
+@media screen and (min-width: 376px) {
   .form-container--large {
     width: 416px;
   }
 
-  .form--login {
+  .form--user {
     display: flex;
     flex: 1;
     justify-content: center;
+    padding-top: 16px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+
+  .form--user {
     padding-top: 48px;
   }
 }
 
 @media screen and (min-width: 960px) {
 
-  .form--login {
+  .form--user {
     align-items: center;
+  }
+
+  .form__group--half {
+    width: 50%;
   }
 }

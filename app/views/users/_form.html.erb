@@ -1,31 +1,38 @@
-<%= form_for(@user) do |form| %>
+<%= form_for(@user, :html => {:class => 'form'}) do |form| %>
   <%= render 'application/error_messages' %>
-  <p>
-    <%= form.label :first_name %><br />
-    <%= form.text_field :first_name %>
-  </p>
 
-  <p>
-    <%= form.label :last_name %><br />
-    <%= form.text_field :last_name %>
-  </p>
+  <div class="form__group">
+    <div class="form__group--half left">
+      <%= form.label :first_name, class: "form__label" %>
+      <%= form.text_field :first_name, class: "form__input" %>
+    </div>
 
-  <p>
-    <%= form.label :email %><br />
-    <%= form.text_field :email %>
-  </p>
+    <div class="form__group--half right">
+      <%= form.label :last_name, class: "form__label" %>
+      <%= form.text_field :last_name, class: "form__input" %>
+    </div>
+  </div>
 
-  <p>
-    <%= form.label :password %><br />
-    <%= form.password_field :password %>
-  </p>
+  <%= form.label :email, class: "form__label" %>
+  <%= form.text_field :email, class: "form__input" %>
 
-  <p>
-    <%= form.label :password_confirmation %><br />
-    <%= form.password_field :password_confirmation %>
-  </p>
+  <%= form.label :password, class: "form__label" %>
 
-  <p>
-    <%= form.submit yield(:button_text) %>
-  </p>
+  <div class="form__input-group">
+    <%= form.password_field :password, id: "form__password", class: "form__input form__input--password" %>
+    <span class="password-toggle form__password-toggle"><i class="far fa-eye-slash"></i></span>
+  </div>
+
+  <% form.label :password_confirmation, class: "form__label" %>
+  <% form.password_field :password_confirmation, class: "form__input form__input--password" %>
+
+  <ul class="password-requirements">
+    <li class="password-requirement password-requirement--default">Cannot contain your email address</li>
+    <li class="password-requirement password-requirement--default">At least 8 characters</li>
+    <li class="password-requirement password-requirement--default">Contains a number or special character</li>
+  </ul>
+
+  <%= form.submit yield(:button_text), class: "button button--primary" %>
+  <div class="form__divider"></div>
+  <p class="form__text">Already have an account? <a href="<%= login_path %>" class="form__link form__link--primary link">Sign in</a></p>
 <% end %>

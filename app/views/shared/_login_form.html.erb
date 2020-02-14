@@ -3,7 +3,7 @@
   <%= f.email_field :email, class: "form__input" %>
 
   <%= f.label :password, class: "form__label" %>
-  <%= f.password_field :password, class: "form__input" %>
+  <%= f.password_field :password, id: "form__password", class: "form__input" %>
 
   <div class="form__group">
     <%= f.label :remember_me do %>
@@ -11,7 +11,7 @@
       <span class="form__label--checkbox">Remember me</span>
     <% end %>
 
-    <div id="show-password-link" class="form__link form__link--secondary link">Show password</div>
+    <div class="password-toggle form__link form__link--secondary link">Show password</div>
   </div>
 
   <%= f.submit "Sign in", class: "button button--primary" %>
