@@ -1,4 +1,5 @@
 @import 'config';
+@import 'reminders';
 
 .dashboard-container {
   display: flex;
@@ -20,11 +21,6 @@
   font-size: 24px;
   font-weight: 400;
   margin-bottom: 8px;
-}
-
-// TODO: move to appropriate file
-.reminder {
-  margin-bottom: 24px;
 }
 
 .dashboard-events__title {

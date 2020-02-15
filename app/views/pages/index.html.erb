@@ -5,9 +5,16 @@
       <img class="dashboard-header__avatar user-avatar user-avatar--48" src="https://source.unsplash.com/collection/8470962/48x48">
       <h1 class="dashboard-header__title">Hey, <span class="user-name"><%= @user.first_name %></span>!</h1>
     </div>
-    <div class="reminder">
-      <div class="reminder__title">Reminder!</div>
-      <div class="reminder__content">You're signed up to bring a snack this Tuesday for the White Elephant Party</div>
+    <div class="reminder reminder--on-snack">
+      <div class="reminder__icon-group">
+        <div class="reminder__icon-container">
+          <i class="reminder__icon fas fa-bell"></i>
+        </div>
+      </div>
+      <div class="reminder__details-group">
+        <div class="reminder__title reminder__title--on-snack">Reminder!</div>
+        <div class="reminder__content">You're signed up to bring a snack <span class="reminder__date">this Tuesday</span> for the <a href="#" class="reminder__event reminder__event-link">White Elephant Party</a></div>
+      </div>
     </div>
   </div>
   <div class="dashboard-events">
