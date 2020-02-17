@@ -38,15 +38,8 @@ body {
   margin-top: 16px;
 }
 
-.divider-line {
-  background-color: $indigo-50;
-  height: 2px;
-  margin-bottom: 16px;
-  width: 200px;
-}
-
 /* tablet styles */
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: $mq-desktop-small) {
   .app-container {
     grid-template-rows: 85px 1fr 64px;
   }
@@ -57,9 +50,9 @@ body {
   }
 }
 
-@media screen and (min-width: 1280px) {}
+@media screen and (min-width: $mq-desktop-medium) {}
 
-@media screen and (min-width: 1440px) {
+@media screen and (min-width: $mq-desktop-large) {
   .content-container {
     padding-left: 48px;
     padding-right: 48px;

@@ -60,3 +60,52 @@
   font-weight: 700;
   text-transform: uppercase;
 }
+
+@media screen and (min-width: $mq-desktop-small) {
+  .event-card {
+    border: 1px solid $blue-grey-100;
+    flex-direction: column;
+    height: 280px;
+    padding: 24px 32px;
+    position: relative;
+    width: 344px;
+  }
+
+  .event-card__gradient-line {
+    display: none;
+  }
+
+  .event-card__date-group {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .event-card__date {
+    font-size: 64px;
+    font-weight: 400;
+    line-height: 64px;
+  }
+
+  .event-card__month {
+    margin-top: -8px;
+  }
+
+  .event-card__details-group {
+    justify-content: flex-end;
+  }
+
+  .event-card__event-name {
+    font-size: 24px;
+    margin-bottom: 24px;
+  }
+
+  .event-card__reminder {
+    position: absolute;
+    top: 40px;
+    right: 32px;
+  }
+}
