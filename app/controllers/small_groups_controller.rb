@@ -1,17 +1,30 @@
+# frozen_string_literal: true
+
 class SmallGroupsController < ApplicationController
   before_action :admin_user
-  before_action :set_small_group, only: [:show, :edit, :update, :destroy]
+  before_action :set_small_group, only: %i[show edit update destroy]
 
   # GET /small_groups
   # GET /small_groups.json
   def index
-    @small_groups = SmallGroup.all
+    night = if request.params['night'] && helpers.is_day_of_the_week?(request.params['night'])
+              request.params['night'].to_date
+            else
+              ''
+    end
+    @active_nights = helpers.get_active_nights
+    if @night.is_a? Date
+      @small_groups = SmallGroup.where(discipleship_community_id: DiscipleshipCommunity.where(night: DiscipleshipCommunity.nights[night]))
+    else
+      @small_groups = SmallGroup.all
+    end
+
+    @night = night
   end
 
   # GET /small_groups/1
   # GET /small_groups/1.json
-  def show
-  end
+  def show; end
 
   # GET /small_groups/new
   def new
@@ -19,8 +32,7 @@ class SmallGroupsController < ApplicationController
   end
 
   # GET /small_groups/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /small_groups
   # POST /small_groups.json
@@ -63,13 +75,31 @@ class SmallGroupsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_small_group
-      @small_group = SmallGroup.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def small_group_params
-      params.require(:small_group).permit(:user_role_id, :discipleship_community_id)
+  # Use callbacks to share common setup or constraints between actions.
+  def set_small_group
+    @small_group = SmallGroup.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def small_group_params
+    params.require(:small_group).permit(:user_role_id, :discipleship_community_id)
+  end
+
+  def abbr_nights(nights)
+    nights.map do |n|
+      n.strftime('%a')
     end
+  end
+
+  # returns an array of nights where there is a discipleship community
+  def get_active_nights_bugger
+    active_nights = DiscipleshipCommunity.nights.filter do |n|
+      DiscipleshipCommunity
+        .where(night: DiscpleshipCommunity.nights[n])
+        .count
+        .positive?
+    end
+    abbr_nights(active_nights)
+  end
 end
