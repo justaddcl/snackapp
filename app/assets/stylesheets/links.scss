@@ -15,7 +15,7 @@
   text-align: center;
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: $mq-desktop-small) {
   .link--secondary {
     text-align: left;
   }

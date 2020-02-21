@@ -20,7 +20,7 @@ const togglePasswordVisibility = (passwordField, passwordToggle = undefined) => 
   passwordToggle.innerHTML = toggleContent;
 };
 
-passwordToggle.addEventListener('click', () => {
+passwordToggle && passwordToggle.addEventListener('click', () => {
   togglePasswordVisibility(passwordInput, passwordToggle);
   }
 );

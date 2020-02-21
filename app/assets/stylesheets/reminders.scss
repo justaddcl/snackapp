@@ -1,0 +1,65 @@
+@import 'config';
+
+.reminder {
+  border-radius: 4px;
+  display: grid;
+  grid-gap: 16px;
+  grid-template-columns: 28px 1fr;
+  margin-bottom: 24px;
+  padding: 16px;
+}
+
+.reminder--on-snack {
+  background-color: $pink-50;
+  border-left: 4px solid $pink-300;
+  color: $pink-700;
+}
+
+.reminder__icon-group {}
+
+.reminder__icon-container {
+  background-color: white;
+  border-radius: 100%;
+  display: grid;
+  height: 28px;
+  place-items: center;
+  width: 28px;
+}
+
+.reminder__icon {
+  font-size: 14px;
+}
+
+.reminder__details-group {}
+
+.reminder__title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.reminder__title--on-snack {
+  color: $pink-900;
+}
+
+.reminder__date {
+  color: $blue-grey-900;
+  font-weight: 700;
+}
+
+.reminder__event {
+  color: $blue-grey-900;
+  font-weight: 700;
+}
+
+.reminder__event-link {
+  text-decoration-color: $pink-300;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 1px;
+}
+
+@media screen and (min-width: $mq-desktop-small) {
+  .reminder {
+    margin-bottom: 32px;
+  }
+}

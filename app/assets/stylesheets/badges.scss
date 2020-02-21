@@ -1,0 +1,12 @@
+@import 'config';
+
+.badge {
+  border-radius: 4px;
+}
+
+.badge--small {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 4px 8px;
+  text-transform: uppercase;
+}

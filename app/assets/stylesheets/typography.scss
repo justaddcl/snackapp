@@ -12,7 +12,12 @@ $font-awesome: 'Font Awesome 5 Free';
   margin-bottom: 16px;
 }
 
-@media screen and (min-width: 1024px) {
+// TODO: move to appropriate file
+.user-name {
+  font-weight: 700;
+}
+
+@media screen and (min-width: $mq-desktop-small) {
   .page-title {
     font-size: 36px;
   }

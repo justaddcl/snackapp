@@ -142,7 +142,7 @@
   }
 }
 
-@media screen and (min-width: 376px) {
+@media screen and (min-width: $mq-mobile) {
   .form-container--large {
     width: 416px;
   }
@@ -155,14 +155,14 @@
   }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: $mq-tablet) {
 
   .form--user {
     padding-top: 48px;
   }
 }
 
-@media screen and (min-width: 960px) {
+@media screen and (min-width: $mq-desktop-small) {
 
   .form--user {
     align-items: center;
