@@ -14,6 +14,9 @@
 
 .night-list__link {
   color: $blue-grey-500;
+  display: inline-block;
+  min-width: 48px;
+  padding: 12px 8px;
 }
 
 .night-list__link--active {
@@ -25,5 +28,152 @@
     display: block;
     height: 4px;
     width: 100%;
+  }
+}
+
+.dc-list {}
+
+.dc-list__item {
+  margin-bottom: 64px;
+}
+
+.dc {
+  display: flex;
+  flex-direction: column;
+}
+
+.dc__summary {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 16px;
+}
+
+.dc__pastor-avatar {
+  margin-right: 16px;
+}
+
+.dc__details {
+  display: flex;
+  flex-direction: column;
+}
+
+.dc-pastor__name {
+  color: $blue-grey-900;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 24px;
+  margin-bottom: 8px;
+}
+
+.dc__group-count {
+  color: $blue-grey-500;
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.group-list {
+  display: grid;
+  grid-gap: 8px;
+}
+
+.group-list__item {
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+}
+
+.group-list__link {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  padding: 12px 16px;
+}
+
+.group__leader-avatar {
+  margin-right: 16px;
+}
+
+.group__leader-name {
+  font-weight: 700;
+}
+
+.group__leader-name--small {
+  color: $blue-grey-700;
+  font-size: 16px;
+}
+
+.group {}
+
+.group__summary {
+  display: flex;
+  margin-bottom: 32px;
+}
+
+.group__details {
+  color: $blue-grey-900;
+}
+
+.group__leader-name--large {
+  color: $blue-grey-900;
+  font-size: 24px;
+  margin-bottom: 12px;
+}
+
+.group__info-group {
+  display: flex;
+}
+
+.group__details-icon {
+  color: $indigo-500;
+  margin-right: 8px;
+  text-align: center;
+  width: 20px;
+}
+
+.group__night,
+.group__dc {
+  color: $indigo-500;
+}
+
+.group-members__text {
+  margin-bottom: 8px;
+}
+
+.group__list-toggle {
+  color: $indigo-500;
+  font-size: 14px;
+  margin-right: 4px;
+}
+
+.group__list-toggle-icon {
+  color: $indigo-500;
+  font-size: 14px;
+}
+
+.group__members-list {
+  display: flex;
+  margin-bottom: 32px;
+}
+
+@media screen and (min-width: $mq-desktop-small) {
+
+  .night-list {
+    justify-content: flex-start;
+  }
+
+  .night-list__item {
+    &+.night-list__item {
+      margin-left: 12px;
+    }
+  }
+
+  .dc__summary {
+    align-items: flex-end;
+  }
+
+  .group-list {
+    grid-gap: 8px 24px;
+    grid-template-columns: repeat(auto-fill, 343px);
   }
 }

@@ -4,6 +4,7 @@
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  display: inline-block;
 }
 
 .button--primary {
@@ -21,6 +22,13 @@
   font-weight: 700;
   margin-top: 16px;
   text-align: center;
+}
+
+.button--back {
+  color: $blue-grey-800;
+  display: flex;
+  height: 48px;
+  min-width: 40px
 }
 
 @media screen and (min-width: $mq-desktop-small) {

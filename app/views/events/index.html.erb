@@ -37,7 +37,7 @@
       <% event.assignments.each do |assignment| %>
         <tr>
           <td></td>
-          <td><%= assignment.user.first_name + ' ' + assignment.user.last_name %></td>
+          <td><%= assignment.user.name %></td>
           <td><%= link_to 'Show', assignment %></td>
         </tr>
       <% end %>

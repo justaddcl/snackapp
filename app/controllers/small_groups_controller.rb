@@ -11,10 +11,19 @@ class SmallGroupsController < ApplicationController
               request.params['night'].to_date
             else
               ''
-    end
+            end
     @active_nights = helpers.get_active_nights
-    if @night.is_a? Date
-      @small_groups = SmallGroup.where(discipleship_community_id: DiscipleshipCommunity.where(night: DiscipleshipCommunity.nights[night]))
+    if night.is_a? Date
+      @dcs = DiscipleshipCommunity.where('night = ?', DiscipleshipCommunity.nights[night.strftime('%A').downcase])
+    else
+      @dcs = DiscipleshipCommunity.all
+    end
+
+    if night.is_a? Date
+      dcs = DiscipleshipCommunity.select(:id).where('night = ?', DiscipleshipCommunity.nights[night.strftime('%A').downcase])
+      dc_ids = []
+      dcs.each { |dc| dc_ids << dc.id }
+      @small_groups = SmallGroup.where(discipleship_community_id: dc_ids)
     else
       @small_groups = SmallGroup.all
     end
@@ -84,22 +93,5 @@ class SmallGroupsController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def small_group_params
     params.require(:small_group).permit(:user_role_id, :discipleship_community_id)
-  end
-
-  def abbr_nights(nights)
-    nights.map do |n|
-      n.strftime('%a')
-    end
-  end
-
-  # returns an array of nights where there is a discipleship community
-  def get_active_nights_bugger
-    active_nights = DiscipleshipCommunity.nights.filter do |n|
-      DiscipleshipCommunity
-        .where(night: DiscpleshipCommunity.nights[n])
-        .count
-        .positive?
-    end
-    abbr_nights(active_nights)
   end
 end

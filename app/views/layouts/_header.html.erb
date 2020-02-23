@@ -90,7 +90,7 @@
             <div class="user-dropdown__user-profile">
               <img class="user-avatar user-avatar--48" src="https://source.unsplash.com/collection/8470962/48x48">
               <div class="user-dropdown__user-text">
-                <span class="user-dropdown__user-name"><%= current_user.first_name + ' ' + current_user.last_name %></span>
+                <span class="user-dropdown__user-name"><%= current_user.name %></span>
                 <a href="" class="user-dropdown__link">
                   <button class="user-dropdown__button">Dashboard</button>
                 </a>
@@ -150,7 +150,7 @@
       <li class="nav-mobile__item">
         <a href="<%= user_path(current_user) %>" class="nav-mobile__link nav-mobile__link-user">
           <img class="user-avatar user-avatar--32 user-avatar--header user-avatar" src="https://source.unsplash.com/collection/8470962/32x32">
-          <span class="nav-mobile__user-name"><%= current_user.first_name + ' ' + current_user.last_name %></span>
+          <span class="nav-mobile__user-name"><%= current_user.name %></span>
         </a>
       </li>
       <li class="nav-mobile__item">

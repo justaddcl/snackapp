@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UserRole < ApplicationRecord
   belongs_to :small_group, optional: true
   belongs_to :user
