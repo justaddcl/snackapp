@@ -38,12 +38,12 @@
           </div>
         </div>
         <div class="divider-line divider-line--dc"></div>
-        <ul class="group-list">
+        <ul class="user-list">
           <% dc.small_groups.each do |group| %>
-            <li class="group-list__item">
-              <a class="group-list__link link" href="<%= small_group_path(group) %>">
-                <img class="group__leader-avatar user-avatar user-avatar--48" src="https://source.unsplash.com/collection/8470962/48x48">
-                <h4 class="group__leader-name group__leader-name--small">
+            <li class="user-list__item">
+              <a class="user-list__link link" href="<%= small_group_path(group) %>">
+                <img class="user__avatar user-avatar user-avatar--48" src="https://source.unsplash.com/collection/8470962/48x48">
+                <h4 class="user__name user__name--small">
                   <%= group.leader.name %>
                 </h4>
               </a>

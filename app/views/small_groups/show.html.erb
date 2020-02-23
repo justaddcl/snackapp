@@ -3,7 +3,7 @@
 
   <p id="notice"><%= notice %></p>
   <div class="button">
-    <a href="/small_groups" class="button--back link"><i class="fas fa-chevron-left"></i> Small Groups</a>
+    <a href="/small_groups" class="button--back link"><i class="button__icon fas fa-chevron-left"></i> Small Groups</a>
   </div>
   <div class="group__summary">
     <img class="dc__pastor-avatar user-avatar user-avatar--128" src="https://source.unsplash.com/collection/8470962/128x128">
@@ -32,9 +32,21 @@
     </div>
     <div class="divider-line"></div>
     <div class="group__members-list">
-      <% @small_group.user_roles.each do |member| %>
-        <img class="user-avatar user-avatar--48" src="https://source.unsplash.com/collection/8470962/48x48">
-      <% end %>
+      <ul class=" user-list user-list--collapsed">
+        <% @small_group.user_roles.each do |member| %>
+          <li class="user-list__item">
+            <a class="user-list__link link" href="<%= user_path(member) %>">
+              <img class="user__avatar user-avatar user-avatar--48" src="https://source.unsplash.com/collection/8470962/48x48">
+              <div class="user__details">
+                <h4 class="user__name user__name--small">
+                    <%= member.user.name %>
+                </h4>
+                <div class="user__role badge"><%= member.type.humanize %></div>
+              </div>
+            </a>
+          </li>
+        <% end %>
+      </ul>
     </div>
   </div>
 
