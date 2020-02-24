@@ -34,6 +34,14 @@
   width: 128px;
 }
 
+.user-avatar--pastor {
+  margin-right: 16px;
+}
+
+.user-avatar--group-leader {
+  margin-right: 16px;
+}
+
 @media screen and (min-width: $mq-desktop-small) {
   .image--mobile-only {
     display: none;
@@ -48,6 +56,15 @@
     height: calc(100vh - 4px);
     margin-bottom: 0px;
     width: 450px;
+  }
+
+  .user-avatar--pastor {
+    margin-right: 24px;
+  }
+
+  .user-avatar--group-leader {
+    margin-right: 0;
+    margin-bottom: 24px;
   }
 }
 

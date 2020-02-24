@@ -10,9 +10,9 @@ class UserRole < ApplicationRecord
 
   enum type: {
     discipleship_community_pastor: 'discipleship_community_pastor',
-    discipleship_community_coordinator: 'discipleship_community_coordinator',
     small_group_leader: 'small_group_leader',
     small_group_coordinator: 'small_group_coordinator',
+    discipleship_community_coordinator: 'discipleship_community_coordinator',
     small_group_member: 'small_group_member'
   }
 end

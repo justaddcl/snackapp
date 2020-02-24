@@ -3,105 +3,97 @@
 
   <p id="notice"><%= notice %></p>
   <div class="button">
-    <a href="/small_groups" class="button--back link"><i class="button__icon fas fa-chevron-left"></i> Small Groups</a>
+    <a href="<%= small_groups_path %>" class="button--back link"><i class="button__icon fas fa-chevron-left"></i> Small Groups</a>
   </div>
-  <div class="group__summary">
-    <img class="dc__pastor-avatar user-avatar user-avatar--128" src="https://source.unsplash.com/collection/8470962/128x128">
-    <div class="group__details">
-      <h1 class="group__leader-name group__leader-name--large"><%= @small_group.leader.name %></h1>
-      <div class="group__info-group">
-        <i class="group__details-icon far fa-calendar-alt"></i>
-        <div>
-          Meets on <a class="group__night link" href="/small_groups?night=<%= @small_group.discipleship_community.night %>"><%= @small_group.discipleship_community.night.capitalize %></a> night
+  <% if current_user.admin? %>
+    <%= link_to 'Edit', edit_small_group_path(@small_group) %>
+  <% end %>
+  <div class="gatherable-grid">
+    <div class="group__summary">
+      <img class="user-avatar user-avatar--128 user-avatar--group-leader" src="https://source.unsplash.com/collection/8470962/128x128">
+      <div class="group__details">
+        <h1 class="group__leader-name group__leader-name--large"><%= @small_group.leader.name %></h1>
+        <div class="group__info-group">
+          <i class="group__details-icon far fa-calendar-alt"></i>
+          <div>
+            Meets on <a class="group__night link" href="/small_groups?night=<%= @small_group.discipleship_community.night %>"><%= @small_group.discipleship_community.night.capitalize %></a> night
+          </div>
         </div>
-      </div>
-      <div class="group__info-group">
-        <i class="group__details-icon fas fa-users"></i>
-        <div>
-          In <a class="group__dc link" href="#"><%= @small_group.discipleship_community.pastor.name %></a> Discipleship Community
+        <div class="group__info-group">
+          <i class="group__details-icon fas fa-users"></i>
+          <div>
+            In <a class="group__dc link" href="#"><%= @small_group.discipleship_community.pastor.name %></a> Discipleship Community
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="group-members">
-    <div class="group-members__text">
-      <h2 class="section-title inline"><%= pluralize(@small_group.user_roles.count, 'members') %></h2>
-      <span class="group__list-toggle link">Show details</span>
-      <i class="group__list-toggle-icon fas fa-chevron-down"></i>
+    <div class="group-members">
+      <div class="group-members__text">
+        <h2 class="section-title inline"><%= pluralize(@small_group.user_roles.count, 'members') %></h2>
+        <span class="group__list-toggle link">Show details</span>
+        <i class="group__list-toggle-icon fas fa-chevron-down"></i>
+      </div>
+      <div class="divider-line"></div>
+      <div class="group__members-list">
+        <ul class="user-list collapsed">
+          <% @small_group.user_roles.order(:type).each do |member| %>
+            <li class="user-list__item">
+              <a class="user-list__link link" href="<%= user_path(member) %>">
+                <img class="user__avatar user-avatar user-avatar--48" src="https://source.unsplash.com/collection/8470962/48x48">
+                <div class="user__details">
+                  <h4 class="user__name user__name--small">
+                      <%= member.user.name %>
+                  </h4>
+                  <% if member.type === UserRole.types[:small_group_leader] || member.type === UserRole.types[:small_group_coordinator] %>
+                  <div class="user__role user__role--<%= member.type.dasherize %> badge"><%= member.type.humanize %></div>
+                  <% end %>
+                </div>
+              </a>
+            </li>
+          <% end %>
+        </ul>
+      </div>
     </div>
-    <div class="divider-line"></div>
-    <div class="group__members-list">
-      <ul class=" user-list user-list--collapsed">
-        <% @small_group.user_roles.each do |member| %>
-          <li class="user-list__item">
-            <a class="user-list__link link" href="<%= user_path(member) %>">
-              <img class="user__avatar user-avatar user-avatar--48" src="https://source.unsplash.com/collection/8470962/48x48">
-              <div class="user__details">
-                <h4 class="user__name user__name--small">
-                    <%= member.user.name %>
-                </h4>
-                <div class="user__role badge"><%= member.type.humanize %></div>
-              </div>
-            </a>
-          </li>
-        <% end %>
+
+    <div class="events">
+      <h2 class="section-title inline"><%= pluralize(3, 'upcoming event') %></h2>
+      <div class="divider-line"></div>
+      <ul class="events__list">
+        <li class="event-card">
+          <div class="event-card__date-group">
+            <div class="event-card__gradient-line"></div>
+            <div class="event-card__date">17</div>
+            <div class="event-card__month">Dec</div>
+          </div>
+          <div class="event-card__details-group">
+            <div class="event-card__event-name">White Elephant Party</div>
+            <div class="event-card__reminder badge badge--small">On snack</div>
+            <div class="event-card__time">7:00PM - 9:00PM</div>
+          </div>
+        </li>
+        <li class="event-card">
+          <div class="event-card__date-group">
+            <div class="event-card__gradient-line"></div>
+            <div class="event-card__date">21</div>
+            <div class="event-card__month">Dec</div>
+          </div>
+          <div class="event-card__details-group">
+            <div class="event-card__event-name">Discipleship Community Christmas Party</div>
+            <div class="event-card__time">1:00PM - 3:30PM</div>
+          </div>
+        </li>
+        <li class="event-card">
+          <div class="event-card__date-group">
+            <div class="event-card__gradient-line"></div>
+            <div class="event-card__date">25</div>
+            <div class="event-card__month">Dec</div>
+          </div>
+          <div class="event-card__details-group">
+            <div class="event-card__event-name">Christmas 🎄🎁</div>
+          </div>
+        </li>
       </ul>
     </div>
   </div>
-
-  <div class="events">
-    <h2 class="section-title inline"><%= pluralize(3, 'upcoming event') %></h2>
-    <div class="divider-line"></div>
-    <ul class="events__list">
-      <li class="event-card">
-        <div class="event-card__date-group">
-          <div class="event-card__gradient-line"></div>
-          <div class="event-card__date">17</div>
-          <div class="event-card__month">Dec</div>
-        </div>
-        <div class="event-card__details-group">
-          <div class="event-card__event-name">White Elephant Party</div>
-          <div class="event-card__reminder badge badge--small">On snack</div>
-          <div class="event-card__time">7:00PM - 9:00PM</div>
-        </div>
-      </li>
-      <li class="event-card">
-        <div class="event-card__date-group">
-          <div class="event-card__gradient-line"></div>
-          <div class="event-card__date">21</div>
-          <div class="event-card__month">Dec</div>
-        </div>
-        <div class="event-card__details-group">
-          <div class="event-card__event-name">Discipleship Community Christmas Party</div>
-          <div class="event-card__time">1:00PM - 3:30PM</div>
-        </div>
-      </li>
-      <li class="event-card">
-        <div class="event-card__date-group">
-          <div class="event-card__gradient-line"></div>
-          <div class="event-card__date">25</div>
-          <div class="event-card__month">Dec</div>
-        </div>
-        <div class="event-card__details-group">
-          <div class="event-card__event-name">Christmas 🎄🎁</div>
-        </div>
-      </li>
-    </ul>
-  </div>
-
-  <p>
-    <strong>User role:</strong>
-    <%# @small_group.user_role_id %>
-  </p>
-
-  <p>
-    <strong>Discipleship community:</strong>
-    <%= @small_group.discipleship_community_id %>
-  </p>
-
-  <% if current_user.admin? %>
-    <%= link_to 'Edit', edit_small_group_path(@small_group) %> |
-    <%= link_to 'Back', small_groups_path %>
-  <% end %>
 </div>

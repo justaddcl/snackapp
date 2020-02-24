@@ -1,5 +1,9 @@
 @import 'config', 'lists';
 
+.gatherable-grid {
+  display: grid;
+}
+
 .night-list {
   display: flex;
   flex-direction: row;
@@ -49,10 +53,6 @@
   margin-bottom: 16px;
 }
 
-.dc__pastor-avatar {
-  margin-right: 16px;
-}
-
 .dc__details {
   display: flex;
   flex-direction: column;
@@ -91,14 +91,15 @@
 }
 
 .group__info-group {
-  display: flex;
+  display: grid;
+  grid-gap: 8px;
+  grid-template-columns: 20px 1fr;
 }
 
 .group__details-icon {
   color: $indigo-500;
   margin-right: 8px;
   text-align: center;
-  width: 20px;
 }
 
 .group__night,
@@ -127,6 +128,33 @@
 }
 
 @media screen and (min-width: $mq-desktop-small) {
+  .gatherable-grid {
+    grid-gap: 16px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .group__summary {
+    align-items: center;
+    border: 1px solid $blue-grey-100;
+    border-radius: 4px;
+    flex-direction: column;
+    padding: 64px;
+  }
+
+  .group__details {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .group__info-group {
+    font-size: 18px;
+  }
+
+  .group__leader-name--large {
+    font-size: 36px;
+    text-align: center;
+  }
 
   .night-list {
     justify-content: flex-start;

@@ -3,6 +3,9 @@
 
   <p id="notice"><%= notice %></p>
 
+  <% if current_user.admin? %>
+    <%= link_to 'New Small Group', new_small_group_path %>
+  <% end %>
   <h1 class="page-title">Small Groups</h1>
   <ul class="night-list list">
     <li class="night-list__item">
@@ -27,7 +30,7 @@
     <% @dcs.each do |dc| %>
       <li class="dc-list__item dc">
         <div class="dc__summary">
-          <img class="dc__pastor-avatar user-avatar user-avatar--128" src="https://source.unsplash.com/collection/8470962/128x128">
+          <img class="user-avatar user-avatar--128 user-avatar--pastor" src="https://source.unsplash.com/collection/8470962/128x128">
           <div class="dc__details">
             <h2 class="dc-pastor__name">
               <%= dc.pastor.name %>
@@ -53,9 +56,4 @@
       </li>
     <% end %>
   </ul>
-
-  <br>
-  <% if current_user.admin? %>
-    <%= link_to 'New Small Group', new_small_group_path %>
-  <% end %>
 </div>

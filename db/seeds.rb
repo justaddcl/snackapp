@@ -103,32 +103,51 @@ end
 user_roles = UserRole.create!([
                                 {
                                   user_id: users[0].id,
-                                  type: UserRole.types.values[0]
+                                  type: UserRole.types[:discipleship_community_pastor]
                                 },
                                 {
                                   user_id: users[1].id,
-                                  type: UserRole.types.values[1],
-                                  small_group_id: 1
+                                  type: UserRole.types[:discipleship_community_pastor]
                                 },
                                 {
                                   user_id: users[2].id,
-                                  type: UserRole.types.values[2],
+                                  type: UserRole.types[:discipleship_community_coordinator],
                                   small_group_id: 1
                                 },
                                 {
                                   user_id: users[3].id,
-                                  type: UserRole.types.values[3],
+                                  type: UserRole.types[:small_group_leader],
                                   small_group_id: 1
                                 },
                                 {
                                   user_id: users[4].id,
-                                  type: UserRole.types.values[4],
+                                  type: UserRole.types[:small_group_coordinator],
+                                  small_group_id: 1
+                                },
+                                {
+                                  user_id: users[5].id,
+                                  type: UserRole.types[:small_group_member],
+                                  small_group_id: 1
+                                },
+                                {
+                                  user_id: users[6].id,
+                                  type: UserRole.types[:small_group_member],
+                                  small_group_id: 1
+                                },
+                                {
+                                  user_id: users[7].id,
+                                  type: UserRole.types[:small_group_member],
                                   small_group_id: 1
                                 },
                                 {
                                   user_id: users[8].id,
-                                  type: UserRole.types.values[4],
-                                  small_group_id: 1
+                                  type: UserRole.types[:small_group_member],
+                                  small_group_id: 6
+                                },
+                                {
+                                  user_id: User.find(9).id,
+                                  type: UserRole.types[:small_group_leader],
+                                  small_group_id: 6
                                 }
                               ])
 
@@ -169,7 +188,7 @@ small_groups = SmallGroup.create!([
                                       discipleship_community_id: discipleship_communities[2].id
                                     },
                                     {
-                                      leader_id: users[0].id,
+                                      leader_id: User.find(9).id,
                                       discipleship_community_id: discipleship_communities[2].id
                                     }
                                   ])
