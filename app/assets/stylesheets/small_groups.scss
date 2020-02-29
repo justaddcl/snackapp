@@ -90,6 +90,10 @@
   margin-bottom: 12px;
 }
 
+.group__info-groups {
+  // display: grid;
+}
+
 .group__info-group {
   display: grid;
   grid-gap: 8px;
@@ -98,13 +102,17 @@
 
 .group__details-icon {
   color: $indigo-500;
-  margin-right: 8px;
-  text-align: center;
+  justify-self: center;
+  margin-top: 4px;
 }
 
 .group__night,
 .group__dc {
   color: $indigo-500;
+}
+
+.group-members {
+  min-width: 343px;
 }
 
 .group-members__text {
@@ -131,6 +139,7 @@
   .gatherable-grid {
     grid-gap: 16px;
     grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
   }
 
   .group__summary {
@@ -147,8 +156,14 @@
     flex-direction: column;
   }
 
+  .group__info-groups {
+    display: grid;
+    grid-template-columns: 256px;
+  }
+
   .group__info-group {
     font-size: 18px;
+    grid-gap: 16px;
   }
 
   .group__leader-name--large {
