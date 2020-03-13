@@ -23,20 +23,27 @@
 
   <div class="field">
     <%= form.label :coordinator_id %>
-    <%= form.collection_select(:coordinator_id , User.where(user_roles: @small_group.user_roles), :id, :name) %>
+    <%= form.collection_select(:coordinator_id , @small_group.members, :id, :name) %>
   </div>
+  <% if @small_group.members.count > 0 %>
+    <ul>
+      <% @small_group.sortedMembers.each do |member| %>
+        <li><%= member.name %></li>
+      <% end %>
+      <ul>
+      <% end %>
 
-  <div class="field">
-    <%= form.label :user_role_id %>
-    <%= form.number_field :user_role_id %>
-  </div>
+      <div class="field">
+        <%= form.label :user_role_id %>
+        <%= form.number_field :user_role_id %>
+      </div>
 
-  <div class="field">
-    <%= form.label :discipleship_community_id %>
-    <%= form.number_field :discipleship_community_id %>
-  </div>
+      <div class="field">
+        <%= form.label :discipleship_community_id %>
+        <%= form.number_field :discipleship_community_id %>
+      </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+      <div class="actions">
+        <%= form.submit %>
+      </div>
+    <% end %>
