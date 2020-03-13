@@ -1,4 +1,4 @@
-<%= form_with(model: small_group, local: true) do |form| %>
+<%= form_with(model: @small_group, local: true) do |form| %>
   <% if small_group.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(small_group.errors.count, "error") %> prohibited this small_group from being saved:</h2>
@@ -10,6 +10,21 @@
       </ul>
     </div>
   <% end %>
+
+  <div class="field">
+    <%= form.label :leader_id %>
+    <%= form.collection_select(:leader_id, User.all, :id, :name) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pastor_id %>
+    <%= form.collection_select(:pastor_id , User.where(user_roles: UserRole.where(type: :discipleship_community_pastor)), :id, :name) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :coordinator_id %>
+    <%= form.collection_select(:coordinator_id , User.where(user_roles: @small_group.user_roles), :id, :name) %>
+  </div>
 
   <div class="field">
     <%= form.label :user_role_id %>
