@@ -20,4 +20,20 @@ class SmallGroup < ApplicationRecord
   def members
     User.where(user_roles: user_roles)
   end
+
+  # returns a list of members sorted by user role
+  def sortedMembers
+    rest = []
+    members = User.where(user_roles: user_roles).order(:first_name)
+    members.each do |member|
+      if member.user_roles.where(small_group_id: id) == UserRole.types[:small_group_leader]
+        leader = member
+      elsif member.user_roles.where(small_group_id: id) == UserRole.types[:small_group_coordinator]
+        coordinator = member
+      else
+        rest << member
+      end
+    end
+    [leader, coordinator, rest].flatten
+  end
 end
