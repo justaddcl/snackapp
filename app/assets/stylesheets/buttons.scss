@@ -1,14 +1,11 @@
 @import "config";
 
 .button {
+  background: none;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   display: inline-block;
-}
-
-.button__icon {
-  margin-right: 12px;
 }
 
 .button--primary {
@@ -26,20 +23,6 @@
   font-weight: 700;
   margin-top: 16px;
   text-align: center;
-}
-
-.button--back {
-  align-items: center;
-  color: $blue-grey-500;
-  display: flex;
-  font-weight: 700;
-  height: 48px;
-  margin-bottom: 16px;
-  min-width: 40px;
-
-  &:hover {
-    color: $blue-grey-700;
-  }
 }
 
 @media screen and (min-width: $mq-desktop-small) {

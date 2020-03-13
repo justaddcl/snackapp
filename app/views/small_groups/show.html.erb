@@ -2,12 +2,9 @@
 <div class="content-container">
 
   <p id="notice"><%= notice %></p>
-  <div class="button">
-    <a href="<%= small_groups_path %>" class="button--back link"><i class="button__icon fas fa-chevron-left"></i> Small Groups</a>
-  </div>
-  <% if current_user.admin? %>
-    <%= link_to 'Edit', edit_small_group_path(@small_group) %>
-  <% end %>
+
+    <a href="<%= small_groups_path %>" class="link link--back link"><i class="link__icon--12 fas fa-chevron-left"></i> Small Groups</a>
+
   <div class="gatherable-grid">
     <div class="group__summary">
       <img class="user-avatar user-avatar--128 user-avatar--group-leader" src="https://source.unsplash.com/collection/8470962/128x128">
@@ -27,14 +24,18 @@
             </div>
           </div>
         </div>
+        <% if current_user.admin? %>
+          <a class="link link--edit" href="<%= edit_small_group_path(@small_group) %>"><i class="link__icon--8 fas fa-pencil-alt"></i>Edit small group</a>
+        <% end %>
       </div>
     </div>
 
     <div class="group-members">
       <div class="group-members__text">
         <h2 class="section-title inline"><%= pluralize(@small_group.user_roles.count, 'members') %></h2>
-        <span class="group__list-toggle link">Show details</span>
-        <i class="group__list-toggle-icon fas fa-chevron-down"></i>
+        <button class="group__list-toggle button">
+          <span>Show details</span><i class="group__list-toggle-icon fas fa-chevron-down"></i>
+        </button>
       </div>
       <div class="divider-line"></div>
       <div class="group__members-list">
