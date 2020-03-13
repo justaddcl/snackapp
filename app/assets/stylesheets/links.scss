@@ -15,8 +15,47 @@
   text-align: center;
 }
 
-@media screen and (min-width: 1024px) {
+.link--back {
+  align-items: center;
+  color: $blue-grey-500;
+  display: inline-flex;
+  font-weight: 700;
+  height: 48px;
+  margin-bottom: 16px;
+  min-width: 40px;
+
+  &:hover {
+    color: $blue-grey-700;
+  }
+}
+
+.link--edit {
+  border: 1px solid $blue-grey-500;
+  border-radius: 4px;
+  color: $blue-grey-700;
+  display: inline-block;
+  font-size: 14px;
+  padding: 8px;
+  position: absolute;
+  right: 16px;
+  top: 0px;
+}
+
+.link__icon--8 {
+  margin-right: 8px;
+}
+
+.link__icon--12 {
+  margin-right: 12px;
+}
+
+@media screen and (min-width: $mq-desktop-small) {
   .link--secondary {
     text-align: left;
+  }
+
+  .link--edit {
+    margin-top: 32px;
+    position: relative;
   }
 }

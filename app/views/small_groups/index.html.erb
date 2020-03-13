@@ -1,33 +1,59 @@
-<p id="notice"><%= notice %></p>
+<% provide(:title, "Small groups") %>
+<div class="content-container">
 
-<h1>Small Groups</h1>
+  <p id="notice"><%= notice %></p>
 
-<table>
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Group leader</th>
-      <th>Meeting night</th>
-      <th>Discipleship community pastor</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @small_groups.each do |small_group| %>
-      <tr>
-        <td><%= small_group.id %></td>
-        <td><%= small_group.leader.first_name + ' ' + small_group.leader.last_name %></td>
-        <td><%= small_group.discipleship_community.night.capitalize %></td>
-        <td><%= small_group.discipleship_community.pastor.first_name + ' ' + small_group.discipleship_community.pastor.last_name%></td>
-        <td><%= link_to 'Show', small_group %></td>
-        <td><%= link_to 'Edit', edit_small_group_path(small_group) %></td>
-        <td><%= link_to 'Destroy', small_group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+  <% if current_user.admin? %>
+    <%= link_to 'New Small Group', new_small_group_path %>
+  <% end %>
+  <h1 class="page-title">Small Groups</h1>
+  <ul class="night-list list">
+    <li class="night-list__item">
+      <a
+          class="night-list__link link <%= @night === '' ? 'night-list__link--active' : '' %>"
+          href="/small_groups"
+      > All </a>
+    </li>
+    <% @active_nights.each do |night| %>
+      <li class="night-list__item">
+        <a
+          class="night-list__link link <%= @night.strftime('%a') === night.strftime('%a') ? 'night-list__link--active' : '' if @night.is_a? Date %>"
+          href="/small_groups?night=<%= night.strftime('%A').downcase %>"
+        >
+          <%= night.strftime('%a') %>
+        </a>
+      </li>
     <% end %>
-  </tbody>
-</table>
+  </ul>
 
-<br>
-
-<%= link_to 'New Small Group', new_small_group_path %>
+  <ul class="dc-list">
+    <% @dcs.each do |dc| %>
+      <li class="dc-list__item dc">
+        <div class="dc__summary">
+          <img class="user-avatar user-avatar--128 user-avatar--pastor" src="https://source.unsplash.com/collection/8470962/128x128">
+          <div class="dc__details">
+            <h2 class="dc-pastor__name">
+              <%= dc.pastor.name %>
+            </h2>
+            <h3 class="dc__group-count">
+              <%= pluralize(dc.small_groups.count, 'group') %>
+            </h3>
+          </div>
+        </div>
+        <div class="divider-line divider-line--dc"></div>
+        <ul class="user-list">
+          <% dc.small_groups.each do |group| %>
+            <li class="user-list__item">
+              <a class="user-list__link link" href="<%= small_group_path(group) %>">
+                <img class="user__avatar user-avatar user-avatar--48" src="https://source.unsplash.com/collection/8470962/48x48">
+                <h4 class="user__name user__name--small">
+                  <%= group.leader.name %>
+                </h4>
+              </a>
+            </li>
+          <% end %>
+        </ul>
+      </li>
+    <% end %>
+  </ul>
+</div>

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   self.per_page = 25
   attr_accessor :remember_token
@@ -13,14 +15,19 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: { case_sensitive: false }
   validates :password, presence: true, length: { minimum: 8 }, allow_nil: true
 
+  # returns user's full name
+  def name
+    first_name + ' ' + last_name
+  end
+
   # returns the has digest of the given string
-  def User.digest(string)
+  def self.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
                                                   BCrypt::Engine.cost
     BCrypt::Password.create(string, cost: cost)
   end
 
-  def User.new_token
+  def self.new_token
     SecureRandom.urlsafe_base64
   end
 
@@ -37,7 +44,7 @@ class User < ApplicationRecord
   # returns if the given token matches the digest
   def authenticated?(remember_token)
     return false if remember_digest.nil?
+
     BCrypt::Password.new(remember_token).is_password?(remember_token)
   end
-
 end

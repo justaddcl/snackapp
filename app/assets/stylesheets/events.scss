@@ -1,3 +1,20 @@
-// Place all the styles related to the Events controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'config';
+
+.events__title {
+  color: $blue-grey-700;
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.events__list {
+  display: grid;
+  grid-gap: 16px;
+  margin-bottom: 32px;
+}
+
+@media screen and (min-width: $mq-desktop-small) {
+
+  .events__list {
+    grid-template-columns: repeat(auto-fit, 344px);
+  }
+}

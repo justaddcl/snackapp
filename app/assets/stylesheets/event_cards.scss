@@ -1,0 +1,118 @@
+@import 'config';
+
+.event-card {
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 0 hsl(224, 84%, 75), 0 4px 6px hsla(0, 0%, 0%, 0.1);
+}
+
+.event-card__link {
+  display: flex;
+  padding: 24px;
+}
+
+.event-card__date-group {
+  align-items: flex-end;
+  display: flex;
+  flex-direction: column;
+  margin-right: 24px;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.event-card__gradient-line {
+  background: linear-gradient(135deg, #240754, #7b93db);
+  height: 2px;
+  width: 32px;
+}
+
+.event-card__date {
+  color: $blue-grey-900;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.event-card__month {
+  color: $indigo-300;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.event-card__details-group {
+  align-items: flex-start;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.event-card__event-name {
+  color: $blue-grey-900;
+  font-size: 20px;
+  margin-bottom: 16px;
+}
+
+.event-card__reminder {
+  background-color: $pink-50;
+  color: $pink-900;
+  margin-top: -8px;
+  margin-bottom: 16px;
+}
+
+.event-card__time {
+  color: $blue-grey-500;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+@media screen and (min-width: $mq-desktop-small) {
+  .event-card:not(.event-card--small) {
+    border: 1px solid $blue-grey-100;
+    flex-direction: column;
+    height: 280px;
+    padding: 24px 32px;
+    position: relative;
+    width: 344px;
+  }
+
+  .event-card:not(.event-card--small) .event-card__gradient-line {
+    display: none;
+  }
+
+  .event-card:not(.event-card--small) .event-card__date-group {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .event-card:not(.event-card--small) .event-card__date {
+    font-size: 64px;
+    font-weight: 400;
+    line-height: 64px;
+  }
+
+  .event-card:not(.event-card--small) .event-card__month {
+    margin-top: -8px;
+  }
+
+  .event-card:not(.event-card--small) .event-card__details-group {
+    justify-content: flex-end;
+  }
+
+  .event-card:not(.event-card--small) .event-card__event-name {
+    font-size: 24px;
+    margin-bottom: 0;
+  }
+
+  .event-card:not(.event-card--small) .event-card__time {
+    margin-top: 24px;
+  }
+
+  .event-card:not(.event-card--small) .event-card__reminder {
+    position: absolute;
+    top: 40px;
+    right: 32px;
+  }
+}

@@ -56,20 +56,6 @@
   text-decoration: none;
 }
 
-.user-avatar {
-  border-radius: 50%;
-}
-
-.user-avatar--32 {
-  height: 32px;
-  width: 32px;
-}
-
-.user-avatar--48 {
-  height: 48px;
-  width: 48px;
-}
-
 .user-avatar--header {
   margin-right: 24px;
 }
@@ -236,7 +222,7 @@
 
 .coordinator-dropdown__icon {
   background-color: white;
-  border-radius: 50%;
+  border-radius: 100%;
   display: grid;
   height: 36px;
   place-content: center center;
@@ -401,7 +387,7 @@
   font-weight: 700;
 }
 
-@media screen and (min-width: 1023px) {
+@media screen and (min-width: $mq-desktop-small) {
   .header__content {
     grid-gap: 24px;
     grid-template-columns: auto 1fr 1fr;

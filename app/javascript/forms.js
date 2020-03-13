@@ -17,10 +17,10 @@ const togglePasswordVisibility = (passwordField, passwordToggle = undefined) => 
     : '<i class="far fa-eye-slash"></i>';
   }
 
-  passwordToggle.innerHTML = toggleContent;
+  passwordToggle.innerText = toggleContent;
 };
 
-passwordToggle.addEventListener('click', () => {
+passwordToggle && passwordToggle.addEventListener('click', () => {
   togglePasswordVisibility(passwordInput, passwordToggle);
   }
 );

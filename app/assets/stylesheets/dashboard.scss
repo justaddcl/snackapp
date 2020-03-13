@@ -1,0 +1,38 @@
+@import 'config';
+@import 'reminders';
+
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-header {
+  align-items: center;
+  display: flex;
+  margin-top: 16px;
+  margin-bottom: 32px;
+}
+
+// TODO: add avatar background gradient
+.dashboard-header__avatar {
+  margin-right: 16px;
+}
+
+.dashboard-header__title {
+  font-size: 24px;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+
+@media screen and (min-width: $mq-desktop-small) {
+  .dashboard-header {
+    margin-top: 16px;
+    margin-bottom: 16px;
+    padding: 36px 24px;
+  }
+
+  .dashboard-header__title {
+    font-size: 36px;
+    margin-bottom: 0;
+  }
+}
