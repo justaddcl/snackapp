@@ -10,4 +10,9 @@ class SmallGroup < ApplicationRecord
   def night
     discipleship_community.night
   end
+
+  # returns the group's coordinator
+  def coordinator
+    User.where(user_roles: UserRole.where(small_group_id: id, type: :small_group_coordinator))[0]
+  end
 end
