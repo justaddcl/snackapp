@@ -18,7 +18,7 @@
     <% @discipleship_communities.each do |discipleship_community| %>
       <tr>
         <td><%= discipleship_community.id %></td>
-        <td><%= discipleship_community.pastor.first_name + ' ' + discipleship_community.pastor.last_name %></td>
+        <td><%= discipleship_community.pastor.name %></td>
         <td><%= discipleship_community.night.capitalize %></td>
         <td><%= link_to 'Show', discipleship_community %></td>
         <td><%= link_to 'Edit', edit_discipleship_community_path(discipleship_community) %></td>

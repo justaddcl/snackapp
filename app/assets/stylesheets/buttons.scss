@@ -1,9 +1,11 @@
 @import "config";
 
 .button {
+  background: none;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  display: inline-block;
 }
 
 .button--primary {

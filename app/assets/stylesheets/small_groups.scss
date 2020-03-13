@@ -1,3 +1,192 @@
-// Place all the styles related to the SmallGroups controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'config', 'lists';
+
+.gatherable-grid {
+  display: grid;
+}
+
+.night-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-bottom: 32px;
+}
+
+.night-list__item {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.night-list__link {
+  color: $blue-grey-500;
+  display: inline-block;
+  min-width: 48px;
+  padding: 12px 8px;
+}
+
+.night-list__link--active {
+  color: $blue-grey-900;
+
+  &::after {
+    background: linear-gradient(135deg, #240754, #7b93db);
+    content: '';
+    display: block;
+    height: 4px;
+    width: 100%;
+  }
+}
+
+.dc-list {}
+
+.dc-list__item {
+  margin-bottom: 64px;
+}
+
+.dc {
+  display: flex;
+  flex-direction: column;
+}
+
+.dc__summary {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 16px;
+}
+
+.dc__details {
+  display: flex;
+  flex-direction: column;
+}
+
+.dc-pastor__name {
+  color: $blue-grey-900;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 24px;
+  margin-bottom: 8px;
+}
+
+.dc__group-count {
+  color: $blue-grey-500;
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.group {}
+
+.group__summary {
+  display: flex;
+  margin-bottom: 32px;
+}
+
+.group__details {
+  color: $blue-grey-900;
+}
+
+.group__leader-name--large {
+  color: $blue-grey-900;
+  font-size: 24px;
+  margin-bottom: 12px;
+}
+
+.group__info-groups {
+  // display: grid;
+}
+
+.group__info-group {
+  display: grid;
+  grid-gap: 8px;
+  grid-template-columns: 20px 1fr;
+}
+
+.group__details-icon {
+  color: $indigo-500;
+  justify-self: center;
+  margin-top: 4px;
+}
+
+.group__night,
+.group__dc {
+  color: $indigo-500;
+}
+
+.group-members {
+  min-width: 343px;
+}
+
+.group-members__text {
+  margin-bottom: 8px;
+}
+
+.group__list-toggle {
+  color: $indigo-500;
+  font-size: 14px;
+}
+
+.group__list-toggle-icon {
+  color: $indigo-500;
+  font-size: 14px;
+  margin-left: 8px;
+}
+
+.group__members-list {
+  display: flex;
+  margin-bottom: 32px;
+}
+
+@media screen and (min-width: $mq-desktop-small) {
+  .gatherable-grid {
+    grid-gap: 16px;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+  }
+
+  .group__summary {
+    align-items: center;
+    border: 1px solid $blue-grey-100;
+    border-radius: 4px;
+    flex-direction: column;
+    padding: 64px;
+  }
+
+  .group__details {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .group__info-groups {
+    display: grid;
+    grid-template-columns: 256px;
+  }
+
+  .group__info-group {
+    font-size: 18px;
+    grid-gap: 16px;
+  }
+
+  .group__leader-name--large {
+    font-size: 36px;
+    text-align: center;
+  }
+
+  .night-list {
+    justify-content: flex-start;
+  }
+
+  .night-list__item {
+    &+.night-list__item {
+      margin-left: 12px;
+    }
+  }
+
+  .dc__summary {
+    align-items: flex-end;
+  }
+
+  .group-list {
+    grid-gap: 8px 24px;
+    grid-template-columns: repeat(auto-fill, 343px);
+  }
+}

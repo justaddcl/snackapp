@@ -24,17 +24,6 @@
   margin-bottom: 8px;
 }
 
-.dashboard-events__title {
-  color: $blue-grey-700;
-  font-size: 24px;
-  font-weight: 400;
-}
-
-.dashboard-events__list {
-  display: grid;
-  grid-gap: 16px;
-}
-
 @media screen and (min-width: $mq-desktop-small) {
   .dashboard-header {
     margin-top: 16px;
@@ -45,9 +34,5 @@
   .dashboard-header__title {
     font-size: 36px;
     margin-bottom: 0;
-  }
-
-  .dashboard-events__list {
-    grid-template-columns: repeat(auto-fit, 344px);
   }
 }

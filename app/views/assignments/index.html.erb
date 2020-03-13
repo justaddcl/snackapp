@@ -16,7 +16,7 @@
     <% @assignments.each do |assignment| %>
       <tr>
         <td><%= assignment.id %></td>
-        <td><%= assignment.user.first_name + ' ' + assignment.user.last_name %></td>
+        <td><%= assignment.user.name %></td>
         <td><%= assignment.event.description %></td>
         <td><%= link_to 'Show', assignment %></td>
         <td><%= link_to 'Edit', edit_assignment_path(assignment) %></td>

@@ -10,3 +10,4 @@ if (!noFrame) {
   require('header');
 }
 require('forms');
+require('users.js');

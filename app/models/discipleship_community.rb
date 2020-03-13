@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class DiscipleshipCommunity < ApplicationRecord
-  belongs_to :pastor, class_name: "User"
+  belongs_to :pastor, class_name: 'User'
   has_many :events, as: :gatherable
   has_many :small_groups
 

@@ -7,6 +7,10 @@
   width: 200px;
 }
 
+.divider-line--dc {
+  width: 100%;
+}
+
 @media screen and (min-width: $mq-desktop-small) {
   .divider-line {
     margin-bottom: 32px;
