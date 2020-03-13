@@ -15,4 +15,9 @@ class SmallGroup < ApplicationRecord
   def coordinator
     User.where(user_roles: UserRole.where(small_group_id: id, type: :small_group_coordinator))[0]
   end
+
+  # returns the members of the small group
+  def members
+    User.where(user_roles: user_roles)
+  end
 end
